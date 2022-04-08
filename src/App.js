@@ -1,8 +1,8 @@
-import "./App.css";
-import Home from "./components/Home";
+import React from "react";
+import ContentPage from "./pages/contentPage";
 
 function App() {
-  return <Home />;
+  return <ContentPage />;
 }
 
 export default App;
