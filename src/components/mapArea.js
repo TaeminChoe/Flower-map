@@ -1,8 +1,7 @@
 import React from "react";
 import { StyledMapArea } from "../css/styledMapArea";
 
-import { StyledImage } from "../css/styledImage";
-import map from "../images/map.png";
+// import map from "../images/map.png";
 
 function MapArea({ query }) {
   return (
