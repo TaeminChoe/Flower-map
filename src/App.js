@@ -1,12 +1,9 @@
-import "./App.css";
+import React from "react";
+import MediaQuery, { useMediaQuery } from "react-responsive";
+import ContentPage from "./pages/contentPage";
 
 function App() {
-  return (
-    <>
-      <h1>Hello</h1>
-      <h2>HI</h2>
-    </>
-  );
+  return <ContentPage />;
 }
 
 export default App;
