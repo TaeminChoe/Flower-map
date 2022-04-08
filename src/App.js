@@ -1,11 +1,13 @@
 import "./App.css";
+import CounterWithRedux from "./components/CounterWithRedux";
 
 function App() {
   return (
-    <>
-      <h1>Hello</h1>
-      <h2>HI</h2>
-    </>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <CounterWithRedux />
+    </div>
   );
 }
 
