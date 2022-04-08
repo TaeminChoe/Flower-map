@@ -1,12 +1,12 @@
 import "./App.css";
-import CounterWithRedux from "./components/CounterWithRedux";
+import CounterWithDucks from "./components/CounterWithDucks";
 
 function App() {
   return (
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <CounterWithRedux />
+      <CounterWithDucks />
     </div>
   );
 }

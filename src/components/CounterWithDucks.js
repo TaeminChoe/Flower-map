@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
-import { countUp, countDown } from "../actions";
+import { countUp, countDown } from "../store/module/counter";
 
-const CounterWithRedux = ({ count, countUp, countDown }) => {
+const CounterWithDucks = ({ counter, countUp, countDown }) => {
   return (
     <>
-      <h1> React redux </h1>
+      <h1> React redux ducks </h1>
       <div
         style={{
           width: "100%",
@@ -14,7 +14,7 @@ const CounterWithRedux = ({ count, countUp, countDown }) => {
         }}
       >
         <button onClick={countDown}>-</button>
-        <h1>{count}</h1>
+        <h1>{counter}</h1>
         <button onClick={countUp}>+</button>
       </div>
     </>
@@ -22,7 +22,7 @@ const CounterWithRedux = ({ count, countUp, countDown }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { count: state.count };
+  return { counter: state.counter };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -30,4 +30,4 @@ const mapDispatchToProps = (dispatch) => ({
   countDown: () => dispatch(countDown()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CounterWithRedux);
+export default connect(mapStateToProps, mapDispatchToProps)(CounterWithDucks);
