@@ -4,6 +4,7 @@ import MediaQuery, { useMediaQuery } from "react-responsive";
 import Header from "../components/header";
 import FlowerSlide from "../components/flowerSlide";
 import MapArea from "../components/mapArea";
+import SlideArea from "../components/slideArea";
 //css
 import { StyledWrap } from "../css/styledWrap";
 import { StyledMain } from "../css/styledMain";
@@ -36,6 +37,7 @@ function ContentPage() {
         <StyledBlur query={query.current} />
         <StyledMain query={query.current}>
           <Header query={query.current} />
+          {/* <SlideArea /> */}
           {/* <FlowerSlide query={query.current} /> */}
           <MapArea query={query.current} />
         </StyledMain>
