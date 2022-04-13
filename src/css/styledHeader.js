@@ -11,7 +11,6 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: center;
   color: white;
-
   /* 폰트크기 */
   ${({ query }) => {
     if (query == "pc") {
@@ -34,7 +33,7 @@ const StyledHeader = styled.header`
 
   p {
     padding-top: 1rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 `;
 
