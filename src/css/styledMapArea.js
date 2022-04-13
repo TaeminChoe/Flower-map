@@ -17,7 +17,6 @@ const StyledMapArea = styled.section`
         background-color: rgba(255, 255, 255, 0.65);
         padding: 1rem 2rem;
         margin-top: 1rem;
-        border-radius: 0 10px 10px 0;
       `;
     } else if (query == "tablet") {
       return css`

@@ -36,7 +36,7 @@ function ContentPage() {
         <StyledBlur query={query.current} />
         <StyledMain query={query.current}>
           <Header query={query.current} />
-          <FlowerSlide query={query.current} />
+          {/* <FlowerSlide query={query.current} /> */}
           <MapArea query={query.current} />
         </StyledMain>
       </StyledWrap>
