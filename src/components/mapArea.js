@@ -1,12 +1,11 @@
 import React from "react";
 import { StyledMapArea } from "../css/styledMapArea";
-
-// import map from "../images/map.png";
+import SlideSlick from "../components/slideSlick";
 
 function MapArea({ query }) {
   return (
     <StyledMapArea query={query}>
-      {/* <StyledImage src={map} /> */}
+      <SlideSlick query={query} />
     </StyledMapArea>
   );
 }

@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import MediaQuery, { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from "react-responsive";
 // components
 import Header from "../components/header";
-import FlowerSlide from "../components/flowerSlide";
 import MapArea from "../components/mapArea";
 import Loading from "./Loading";
 //css
@@ -49,7 +48,6 @@ function ContentPage() {
         <StyledBlur query={query.current} />
         <StyledMain query={query.current}>
           <Header query={query.current} />
-          <FlowerSlide query={query.current} />
           <MapArea query={query.current} />
         </StyledMain>
       </StyledWrap>
