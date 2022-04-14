@@ -8,15 +8,6 @@ function FlowerSlide({ query }) {
         <li></li>
         <li></li>
         <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
       </StyledSlide>
     </>
   );
