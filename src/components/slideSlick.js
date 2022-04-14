@@ -9,49 +9,50 @@ import map_line from "../images/map_line.png";
 import { StyledImage } from "../css/styledImage";
 import { StyledHeader } from "../css/styledHeader";
 
-function SlideSlick(query) {
-  const StyledSlick = styled(Slider)`
-    /* 공통스타일 */
-    text-align: center;
-    /* 슬라이드 아래 점 */
-    .slick-dots {
-      .slick-active {
-        button::before {
-          color: white;
-        }
-      }
+const StyledSlick = styled(Slider)`
+  /* 공통스타일 */
+  text-align: center;
+  /* 슬라이드 아래 점 */
+  .slick-dots {
+    .slick-active {
       button::before {
-        color: #e9e9e9;
+        color: white;
       }
     }
-    /* 슬라이드 <> 버튼 */
-    .slick-prev:before,
-    .slick-next:before {
-      font-size: 3rem;
+    button::before {
+      color: #e9e9e9;
     }
+  }
+  /* 슬라이드 <> 버튼 */
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 3rem;
+  }
 
-    /* 슬라이드 폰트 크기, <> 버튼 설정 */
-    ${() => {
-      console.log(query.query);
-      if (query.query == "pc") {
-        return css`
-          font-size: 3rem;
-        `;
-      } else if (query.query == "tablet") {
-        return css`
-          font-size: 3rem;
-        `;
-      } else if (query.query == "mobile") {
-        return css`
-          font-size: 1.6rem;
-          .slick-prev:before,
-          .slick-next:before {
-            display: none;
-          }
-        `;
-      }
-    }}
-  `;
+  /* 슬라이드 폰트 크기, <> 버튼 설정 */
+  ${({ query }) => {
+    console.log(query);
+    if (query == "pc") {
+      return css`
+        font-size: 3rem;
+      `;
+    } else if (query == "tablet") {
+      return css`
+        font-size: 3rem;
+      `;
+    } else if (query == "mobile") {
+      return css`
+        font-size: 1.6rem;
+        .slick-prev:before,
+        .slick-next:before {
+          display: none;
+        }
+      `;
+    }
+  }}
+`;
+
+function SlideSlick({ query }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -99,17 +100,23 @@ function SlideSlick(query) {
   };
 
   return (
-    <StyledSlick {...settings}>
+    <StyledSlick query={query} {...settings}>
       <div>
-        <StyledHeader query={query}>벚꽃</StyledHeader>
+        <StyledHeader query={query}>
+          <h3>벚꽃</h3>
+        </StyledHeader>
         <StyledImage src={map_full} />
       </div>
       <div>
-        <StyledHeader query={query}>진달래</StyledHeader>
+        <StyledHeader query={query}>
+          <h3>진달래</h3>
+        </StyledHeader>
         <StyledImage src={map_line} />
       </div>
       <div>
-        <StyledHeader query={query}>개나리</StyledHeader>
+        <StyledHeader query={query}>
+          <h3>개나리</h3>
+        </StyledHeader>
         <StyledImage src={map_full} />
       </div>
     </StyledSlick>

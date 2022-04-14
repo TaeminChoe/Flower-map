@@ -11,7 +11,9 @@ const StyledHeader = styled.header`
   justify-content: center;
   color: white;
   text-align: center;
-
+  h3 {
+    font-size: 2.5rem;
+  }
   /* 폰트크기 */
   ${({ query }) => {
     if (query == "pc") {
@@ -19,6 +21,7 @@ const StyledHeader = styled.header`
         width: 40%;
         height: 3rem;
         font-size: 5rem;
+        margin: 0 auto;
       `;
     } else if (query == "tablet") {
       return css`
@@ -31,6 +34,9 @@ const StyledHeader = styled.header`
         padding: 1rem 0rem;
         margin: 1rem 0rem;
         font-size: 3rem;
+        h3 {
+          font-size: 2rem;
+        }
       `;
     }
   }}

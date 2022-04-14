@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import MediaQuery, { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from "react-responsive";
 // components
 import Header from "../components/header";
 import MapArea from "../components/mapArea";
