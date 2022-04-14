@@ -10,6 +10,7 @@ import { StyledWrap } from "../css/styledWrap";
 import { StyledMain } from "../css/styledMain";
 import { StyledBlur } from "../css/styledBlur";
 
+// 테스트
 function ContentPage() {
   const isPc = useMediaQuery({
     query: "(min-width:1024px)",
