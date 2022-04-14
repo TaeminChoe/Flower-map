@@ -31,7 +31,6 @@ const StyledSlick = styled(Slider)`
 
   /* 슬라이드 폰트 크기, <> 버튼 설정 */
   ${({ query }) => {
-    console.log(query);
     if (query == "pc") {
       return css`
         font-size: 3rem;
