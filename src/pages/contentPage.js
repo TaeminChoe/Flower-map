@@ -1,11 +1,9 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MediaQuery, { useMediaQuery } from "react-responsive";
 // components
 import Header from "../components/header";
-import FlowerSlide from "../components/flowerSlide";
-// import FlowerSlide from "../components/flowerSlide";
 import MapArea from "../components/mapArea";
-import SlideSlick from "../components/slideSlick";
+import Loading from "./Loading";
 //css
 import { StyledWrap } from "../css/styledWrap";
 import { StyledMain } from "../css/styledMain";

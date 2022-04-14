@@ -8,7 +8,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   animation-name: appear;
-  animation-duration: 4s;
+  animation-duration: 3s;
 
   @keyframes appear {
     0% {
