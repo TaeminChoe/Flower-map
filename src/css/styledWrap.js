@@ -7,7 +7,6 @@ export const StyledWrap = styled.div`
   width: 100%;
   height: 100vh;
   background-image: url(${flower});
-  background-color: rgba(0, 0, 0, 0.5);
   position: relative;
   display: flex;
   align-items: center;
