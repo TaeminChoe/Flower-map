@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledHeader } from "../css/styledHeader";
+import { StyledHeader } from "../css/StyledHeader";
 
 function Header({ query }) {
   return (

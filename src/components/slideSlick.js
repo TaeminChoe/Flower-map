@@ -6,8 +6,8 @@ import styled, { css } from "styled-components";
 
 import map_full from "../images/map_full.png";
 import map_line from "../images/map_line.png";
-import { StyledImage } from "../css/styledImage";
-import { StyledHeader } from "../css/styledHeader";
+import { StyledImage } from "../css/StyledImage";
+import { StyledHeader } from "../css/StyledHeader";
 
 const StyledSlick = styled(Slider)`
   /* 공통스타일 */
@@ -27,6 +27,10 @@ const StyledSlick = styled(Slider)`
   .slick-prev:before,
   .slick-next:before {
     font-size: 3rem;
+  }
+
+  & > div {
+    position: relative;
   }
 
   /* 슬라이드 폰트 크기, <> 버튼 설정 */

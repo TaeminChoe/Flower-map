@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 // components
-import Header from "../components/header";
-import MapArea from "../components/mapArea";
+import Header from "../components/Header";
+import MapArea from "../components/MapArea";
 import Loading from "./Loading";
 //css
-import { StyledWrap } from "../css/styledWrap";
-import { StyledMain } from "../css/styledMain";
-import { StyledBlur } from "../css/styledBlur";
+import { StyledWrap } from "../css/StyledWrap";
+import { StyledMain } from "../css/StyledMain";
+import { StyledBlur } from "../css/StyledBlur";
 
 function ContentPage() {
   const isPc = useMediaQuery({
@@ -21,7 +21,7 @@ function ContentPage() {
   });
 
   const query = useRef();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   if (isPc) {
     query.current = "pc";

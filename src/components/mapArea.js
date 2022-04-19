@@ -1,6 +1,6 @@
 import React from "react";
-import { StyledMapArea } from "../css/styledMapArea";
-import SlideSlick from "../components/slideSlick";
+import { StyledMapArea } from "../css/StyledMapArea";
+import SlideSlick from "./SlideSlick";
 
 function MapArea({ query }) {
   return (
