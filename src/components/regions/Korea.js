@@ -13,15 +13,16 @@ import Gyeongnam from "./Gyeongnam";
 import Gyeongbuk from "./Gyeongbuk";
 import Ulsan from "./Ulsan";
 import Daegu from "./Daegu";
-import Daejeon from "./Daejeon";
 import Sejong from "./Sejong";
 import Busan from "./Busan";
-import Daejun from "./Daejeon";
+import Daejeon from "./Daejeon";
+import Incheon from "./Incheon";
 
 const RegionWrapper = styled.div`
   background-color: #333;
-  width: 100%;
-  height: 150vh;
+  width: 500px;
+  height: 900px;
+  margin: 50px;
   position: relative;
 `;
 
@@ -30,15 +31,19 @@ const Korea = () => {
     <RegionWrapper>
       <GyeongGi />
       <Seoul />
+      <Incheon />
       <Gangwon />
       <Chungbuk />
       <Chungnam />
+      <Daejeon />
       <Sejong />
       <Daejeon />
       <Gyeongbuk />
       <Daegu />
       <Jeonbuk />
       <Gyeongnam />
+      <Ulsan />
+      <Busan />
       <Jeonnam />
       <Jeju />
     </RegionWrapper>
