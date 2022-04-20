@@ -6,10 +6,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { StyledWrap } from "../css/styledWrap";
-import { StyledBlur } from "../css/styledBlur";
-import { StyledMain } from "../css/styledMain";
-import { StyledHeader } from "../css/styledHeader";
+import { StyledWrap } from "../css/StyledWrap";
+import { StyledBlur } from "../css/StyledBlur";
+import { StyledMain } from "../css/StyledMain";
+import { StyledHeader } from "../css/StyledHeader";
 
 const StyledDetailArea = styled.section`
   width: 100%;
