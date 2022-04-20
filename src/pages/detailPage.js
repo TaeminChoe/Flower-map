@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styled, { css } from "styled-components";
 import { useMediaQuery } from "react-responsive";
-import SlideWeather from "../components/slideWeather";
+import SlideWeather from "../components/SlideWeather";
 
 import { StyledWrap } from "../css/StyledWrap";
 import { StyledBlur } from "../css/StyledBlur";
