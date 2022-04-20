@@ -51,7 +51,7 @@ const StyledSlick = styled(Slider)`
   }}
 `;
 
-function SlideSlick({ query }) {
+function SlideFlower({ query }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -121,4 +121,4 @@ function SlideSlick({ query }) {
     </StyledSlick>
   );
 }
-export default SlideSlick;
+export default SlideFlower;

@@ -1,11 +1,11 @@
 import React from "react";
 import { StyledMapArea } from "../css/styledMapArea";
-import SlideSlick from "../components/slideSlick";
+import SlideFlower from "./slideFlower";
 
 function MapArea({ query }) {
   return (
     <StyledMapArea query={query}>
-      <SlideSlick query={query} />
+      <SlideFlower query={query} />
     </StyledMapArea>
   );
 }
