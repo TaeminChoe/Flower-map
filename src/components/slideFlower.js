@@ -16,6 +16,7 @@ const StyledSlick = styled(Slider)`
   text-align: center;
   /* 슬라이드 아래 점 */
   .slick-dots {
+    bottom: 30px;
     .slick-active {
       button::before {
         color: white;
