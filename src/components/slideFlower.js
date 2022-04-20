@@ -16,6 +16,7 @@ const StyledSlick = styled(Slider)`
   text-align: center;
   /* 슬라이드 아래 점 */
   .slick-dots {
+    bottom: 30px;
     .slick-active {
       button::before {
         color: white;
@@ -57,7 +58,7 @@ const StyledSlick = styled(Slider)`
   }}
 `;
 
-function SlideSlick({ query }) {
+function SlideFlower({ query }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -128,4 +129,4 @@ function SlideSlick({ query }) {
     </StyledSlick>
   );
 }
-export default SlideSlick;
+export default SlideFlower;

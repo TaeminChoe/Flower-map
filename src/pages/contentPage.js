@@ -4,6 +4,8 @@ import { useMediaQuery } from "react-responsive";
 import Header from "../components/Header";
 import MapArea from "../components/MapArea";
 import Loading from "./Loading";
+import DetailPage from "./DetailPage";
+
 //css
 import { StyledWrap } from "../css/StyledWrap";
 import { StyledMain } from "../css/StyledMain";
@@ -51,6 +53,7 @@ function ContentPage() {
           <MapArea query={query.current} />
         </StyledMain>
       </StyledWrap>
+      <DetailPage query={query.current} />
     </>
   );
 }
