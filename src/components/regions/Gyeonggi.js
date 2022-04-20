@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { StyledRegion } from "../../css/StyledRegion";
 
-const GyeongGiButton = styled.div`
-  background-color: #eee;
+const GyeongGiButton = styled(StyledRegion)`
   width: 200px;
   height: 200px;
+  top: 180px;
+  left: 270px;
+
   clip-path: polygon(
     45.57% 0.06%,
     48.42% 0.05%,
@@ -431,15 +434,6 @@ const GyeongGiButton = styled.div`
     41.88% 0.14%,
     45.57% 0.06%
   );
-
-  position: absolute;
-  top: 180px;
-  left: 270px;
-  transition: 200ms ease-out;
-
-  &:hover {
-    background-color: tomato;
-  }
 `;
 
 const GyeongGi = () => {

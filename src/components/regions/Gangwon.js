@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const GangwonButton = styled.div`
-  background-color: #eee;
-  width: 200px;
-  height: 200px;
+import { StyledRegion } from "../../css/StyledRegion";
+
+const GangwonButton = styled(StyledRegion)`
+  width: 220px;
+  height: 220px;
+  top: 130px;
+  left: 410px;
+
   clip-path: polygon(
     64.09% 18.47%,
     64.59% 21.33%,
@@ -1146,15 +1150,6 @@ const GangwonButton = styled.div`
     62.49% 15.64%,
     64.09% 18.47%
   );
-
-  position: absolute;
-  top: 140px;
-  left: 430px;
-  transition: 200ms ease-out;
-
-  &:hover {
-    background-color: tomato;
-  }
 `;
 
 const Gangwon = () => {

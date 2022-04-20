@@ -1,26 +1,14 @@
 import React from "react";
+import styled from "styled-components";
+
 import ContentPage from "./pages/ContentPage";
 import DetailPage from "./pages/DetailPage";
-import styled from "styled-components";
-import GyeongGi from "./components/Gyeonggi";
-import Gangwon from "./components/Gangwon";
-
-const Korea = styled.div`
-  background-color: #333;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-`;
+import Korea from "./components/regions/Korea";
 
 function App() {
   // return <ContentPage />;
   // return <DetailPage />;
-  return (
-    <Korea>
-      <GyeongGi></GyeongGi>
-      <Gangwon></Gangwon>
-    </Korea>
-  );
+  return <Korea />;
 }
 
 export default App;
