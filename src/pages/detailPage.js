@@ -3,10 +3,10 @@ import styled, { css } from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import SlideWeather from "../components/slideWeather";
 
-import { StyledWrap } from "../css/styledWrap";
-import { StyledBlur } from "../css/styledBlur";
-import { StyledMain } from "../css/styledMain";
-import { StyledHeader } from "../css/styledHeader";
+import { StyledWrap } from "../css/StyledWrap";
+import { StyledBlur } from "../css/StyledBlur";
+import { StyledMain } from "../css/StyledMain";
+import { StyledHeader } from "../css/StyledHeader";
 
 const StyledDetailArea = styled.section`
   width: 100%;

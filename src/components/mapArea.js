@@ -1,6 +1,6 @@
 import React from "react";
 import { StyledMapArea } from "../css/styledMapArea";
-import SlideFlower from "./slideFlower";
+import SlideFlower from "./SlideFlower";
 
 function MapArea({ query }) {
   return (
