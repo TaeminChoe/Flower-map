@@ -6,9 +6,7 @@ import DetailPage from "./pages/DetailPage";
 import Korea from "./components/regions/Korea";
 
 function App() {
-  // return <ContentPage />;
-  // return <DetailPage />;
-  return <Korea />;
+  return <ContentPage />;
 }
 
 export default App;

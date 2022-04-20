@@ -9,6 +9,8 @@ import map_line from "../images/map_line.png";
 import { StyledImage } from "../css/StyledImage";
 import { StyledHeader } from "../css/StyledHeader";
 
+import Korea from "./regions/Korea";
+
 const StyledSlick = styled(Slider)`
   /* 공통스타일 */
   text-align: center;
@@ -108,7 +110,8 @@ function SlideSlick({ query }) {
         <StyledHeader query={query}>
           <h3>벚꽃</h3>
         </StyledHeader>
-        <StyledImage src={map_full} />
+        <Korea />
+        {/* <StyledImage src={map_full} /> */}
       </div>
       <div>
         <StyledHeader query={query}>

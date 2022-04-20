@@ -19,9 +19,8 @@ import Daejeon from "./Daejeon";
 import Incheon from "./Incheon";
 
 const RegionWrapper = styled.div`
-  background-color: #333;
-  width: 500px;
-  height: 900px;
+  width: auto;
+  height: 60vh;
   margin: 50px;
   position: relative;
 `;
