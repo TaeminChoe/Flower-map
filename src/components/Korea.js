@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { StyledRegion } from "../css/StyledRegion";
 
 const Korea = ({ query, name }) => {
@@ -22,14 +22,21 @@ const Korea = ({ query, name }) => {
     "seoul",
     "ulsan",
   ];
+  const navi = useNavigate();
+
   const handleOnClick = (e) => {
     console.log(name, e.target.className);
+    navi("/detail", {
+      state: null,
+    });
   };
 
   return (
     <StyledRegion query={query}>
-      {REGION_LIST.map((region) => {
-        return <div className={region} onClick={handleOnClick} />;
+      {REGION_LIST.map((region, idx) => {
+        return (
+          <div key={`${idx}`} className={region} onClick={handleOnClick} />
+        );
       })}
     </StyledRegion>
   );
