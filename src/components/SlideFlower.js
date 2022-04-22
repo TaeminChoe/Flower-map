@@ -9,7 +9,7 @@ import map_line from "../images/map_line.png";
 import { StyledImage } from "../css/StyledImage";
 import { StyledHeader } from "../css/StyledHeader";
 
-import Korea from "./regions/Korea";
+import Korea from "./Korea";
 
 const StyledSlick = styled(Slider)`
   /* 공통스타일 */
@@ -59,6 +59,7 @@ const StyledSlick = styled(Slider)`
 `;
 
 function SlideFlower({ query }) {
+  const FLOWERS = ["벚꽃", "진달래", "개나리"];
   const settings = {
     dots: true,
     infinite: true,
@@ -107,25 +108,16 @@ function SlideFlower({ query }) {
 
   return (
     <StyledSlick query={query} {...settings}>
-      <div>
-        <StyledHeader query={query}>
-          <h3>벚꽃</h3>
-        </StyledHeader>
-        <Korea />
-        {/* <StyledImage src={map_full} /> */}
-      </div>
-      <div>
-        <StyledHeader query={query}>
-          <h3>진달래</h3>
-        </StyledHeader>
-        <StyledImage src={map_line} />
-      </div>
-      <div>
-        <StyledHeader query={query}>
-          <h3>개나리</h3>
-        </StyledHeader>
-        <StyledImage src={map_full} />
-      </div>
+      {FLOWERS.map((flower, idx) => {
+        return (
+          <div key={`${idx}`}>
+            <StyledHeader query={query}>
+              <h3>{flower}</h3>
+            </StyledHeader>
+            <Korea query={query} name={flower} />
+          </div>
+        );
+      })}
     </StyledSlick>
   );
 }

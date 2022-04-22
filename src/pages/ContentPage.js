@@ -53,7 +53,6 @@ function ContentPage() {
           <MapArea query={query.current} />
         </StyledMain>
       </StyledWrap>
-      <DetailPage query={query.current} />
     </>
   );
 }
