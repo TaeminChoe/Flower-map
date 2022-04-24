@@ -1,27 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { StyledRegion } from "../css/StyledRegion";
+import { StyledRegion } from "../css/styledRegion";
+
+import { REGION_LIST } from "../utils/regionData";
 
 const Korea = ({ query, name }) => {
-  const REGION_LIST = [
-    "busan",
-    "chungbuk",
-    "chungnam",
-    "daegu",
-    "daejeon",
-    "gangwon",
-    "gwangju",
-    "gyeongbuk",
-    "gyeonggi",
-    "gyeongnam",
-    "incheon",
-    "jeju",
-    "jeonbuk",
-    "jeonnam",
-    "sejong",
-    "seoul",
-    "ulsan",
-  ];
   const navi = useNavigate();
 
   const handleOnClick = (e) => {
@@ -33,7 +16,7 @@ const Korea = ({ query, name }) => {
 
   return (
     <StyledRegion query={query}>
-      {REGION_LIST.map((region, idx) => {
+      {REGION_LIST.map((region) => region.name).map((region, idx) => {
         return (
           <div key={`${idx}`} className={region} onClick={handleOnClick} />
         );

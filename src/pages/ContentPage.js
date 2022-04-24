@@ -4,12 +4,11 @@ import { useMediaQuery } from "react-responsive";
 import Header from "../components/Header";
 import MapArea from "../components/MapArea";
 import Loading from "./Loading";
-import DetailPage from "./DetailPage";
 
 //css
-import { StyledWrap } from "../css/StyledWrap";
-import { StyledMain } from "../css/StyledMain";
-import { StyledBlur } from "../css/StyledBlur";
+import { StyledWrap } from "../css/styledWrap";
+import { StyledMain } from "../css/styledMain";
+import { StyledBlur } from "../css/styledBlur";
 
 function ContentPage() {
   const isPc = useMediaQuery({
