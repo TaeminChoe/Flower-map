@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 // import flower from "../images/flower.jpg";
 import flower from "../images/flower2.jpg";
 // import flower from "../images/flower3.jpg";
@@ -12,23 +12,16 @@ const StyledBlur = styled.div`
   z-index: 100;
   border-radius: 10px;
   filter: blur(25px);
-
-  ${({ query }) => {
-    if (query == "pc") {
-      return css`
-        width: 85%;
-        padding: 1rem;
-      `;
-    } else if (query == "tablet") {
-      return css`
-        padding: 1rem;
-      `;
-    } else if (query == "mobile") {
-      return css`
-        padding: 0.2rem;
-      `;
-    }
-  }}
+  @media only screen and (min-width: 1024px) {
+    width: 85%;
+    padding: 1rem;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    padding: 1rem;
+  }
+  @media only screen and (max-width: 767px) {
+    padding: 0.2rem;
+  }
 `;
 
 export { StyledBlur };

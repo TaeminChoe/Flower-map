@@ -8,7 +8,7 @@ import { StyledDetailContent } from "../css/StyledDetailContent";
 // components
 import SlideWeather from "../components/SlideWeather";
 
-function DetailWeatherArea({ query }) {
+function DetailWeatherArea() {
   return (
     <StyledWrap>
       <StyledBlur />
@@ -16,7 +16,7 @@ function DetailWeatherArea({ query }) {
         <StyledDetailArea>
           <StyledHeader>WEATHER</StyledHeader>
           <StyledDetailContent>
-            <SlideWeather query={query} />
+            <SlideWeather />
           </StyledDetailContent>
         </StyledDetailArea>
       </StyledMain>

@@ -2,11 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-import map_full from "../images/map_full.png";
-import map_line from "../images/map_line.png";
-import { StyledImage } from "../css/StyledImage";
 import { StyledHeader } from "../css/StyledHeader";
 
 import Korea from "./Korea";
@@ -37,25 +34,20 @@ const StyledSlick = styled(Slider)`
   }
 
   /* 슬라이드 폰트 크기, <> 버튼 설정 */
-  ${({ query }) => {
-    if (query == "pc") {
-      return css`
-        font-size: 3rem;
-      `;
-    } else if (query == "tablet") {
-      return css`
-        font-size: 3rem;
-      `;
-    } else if (query == "mobile") {
-      return css`
-        font-size: 1.6rem;
-        .slick-prev:before,
-        .slick-next:before {
-          display: none;
-        }
-      `;
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 3rem;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: 3rem;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 1.6rem;
+    .slick-prev:before,
+    .slick-next:before {
+      display: none;
     }
-  }}
+  }
 `;
 
 function SlideFlower({ query }) {
@@ -111,10 +103,10 @@ function SlideFlower({ query }) {
       {FLOWERS.map((flower, idx) => {
         return (
           <div key={`${idx}`}>
-            <StyledHeader query={query}>
+            <StyledHeader>
               <h3>{flower}</h3>
             </StyledHeader>
-            <Korea query={query} name={flower} />
+            <Korea name={flower} />
           </div>
         );
       })}

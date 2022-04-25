@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const StyledDetailArea = styled.section`
   width: 100%;

@@ -1,9 +1,9 @@
 import React from "react";
 import { StyledHeader } from "../css/StyledHeader";
 
-function Header({ query }) {
+function Header() {
   return (
-    <StyledHeader query={query}>
+    <StyledHeader>
       FLOWER MAP<p>This site made for portfolio</p>
     </StyledHeader>
   );
