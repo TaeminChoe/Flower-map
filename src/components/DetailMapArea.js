@@ -14,13 +14,17 @@ import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 function DetailMapArea() {
   const location = useLocation();
-  const [region, setRegion] = useState({});
+  const [region, setRegion] = useState();
   const [map, setMap] = useState();
 
   useEffect(() => {
     const id = location.pathname.split("/")[2];
     setRegion(REGION_LIST.find((region) => region.id === Number(id)));
   }, []);
+
+  if (region) {
+    console.log(region);
+  }
 
   return (
     <StyledWrap>
@@ -34,7 +38,7 @@ function DetailMapArea() {
                 center={{ lat: region.lat, lng: region.lng }}
                 level={region.level}
                 style={{ width: "100%", height: "100%" }}
-                onCreate={setMap}
+                // onCreate={setMap}
               >
                 {/* <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
                 <div style={{ color: "#000" }}>Hello World!</div>
