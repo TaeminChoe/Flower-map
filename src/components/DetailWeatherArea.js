@@ -1,10 +1,10 @@
 // css
-import { StyledWrap } from "../css/styledWrap";
-import { StyledBlur } from "../css/styledBlur";
-import { StyledMain } from "../css/styledMain";
-import { StyledHeader } from "../css/styledHeader";
-import { StyledDetailArea } from "../css/styledDetailArea";
-import { StyledDetailContent } from "../css/styledDetailContent";
+import { StyledWrap } from "../css/StyledWrap";
+import { StyledBlur } from "../css/StyledBlur";
+import { StyledMain } from "../css/StyledMain";
+import { StyledHeader } from "../css/StyledHeader";
+import { StyledDetailArea } from "../css/StyledDetailArea";
+import { StyledDetailContent } from "../css/StyledDetailContent";
 // components
 import SlideWeather from "../components/SlideWeather";
 

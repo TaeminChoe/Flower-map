@@ -3,6 +3,9 @@ export const REGION_LIST = [
     id: 0,
     name: "busan",
     korName: "부산",
+    lat: 35.1796,
+    lng: 129.0757,
+    level: 8,
   },
   {
     id: 1,

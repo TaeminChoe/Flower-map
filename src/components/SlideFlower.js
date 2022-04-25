@@ -6,8 +6,8 @@ import styled, { css } from "styled-components";
 
 import map_full from "../images/map_full.png";
 import map_line from "../images/map_line.png";
-import { StyledImage } from "../css/styledImage";
-import { StyledHeader } from "../css/styledHeader";
+import { StyledImage } from "../css/StyledImage";
+import { StyledHeader } from "../css/StyledHeader";
 
 import Korea from "./Korea";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { StyledRegion } from "../css/styledRegion";
+import { StyledRegion } from "../css/StyledRegion";
 
 import { REGION_LIST } from "../utils/regionData";
 

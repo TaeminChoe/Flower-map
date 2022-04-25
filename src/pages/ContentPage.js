@@ -6,9 +6,9 @@ import MapArea from "../components/MapArea";
 import Loading from "./Loading";
 
 //css
-import { StyledWrap } from "../css/styledWrap";
-import { StyledMain } from "../css/styledMain";
-import { StyledBlur } from "../css/styledBlur";
+import { StyledWrap } from "../css/StyledWrap";
+import { StyledMain } from "../css/StyledMain";
+import { StyledBlur } from "../css/StyledBlur";
 
 function ContentPage() {
   const isPc = useMediaQuery({

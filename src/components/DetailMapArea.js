@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { StyledWrap } from "../css/styledWrap";
-import { StyledBlur } from "../css/styledBlur";
-import { StyledMain } from "../css/styledMain";
-import { StyledHeader } from "../css/styledHeader";
-import { StyledDetailArea } from "../css/styledDetailArea";
-import { StyledDetailContent } from "../css/styledDetailContent";
+import { StyledWrap } from "../css/StyledWrap";
+import { StyledBlur } from "../css/StyledBlur";
+import { StyledMain } from "../css/StyledMain";
+import { StyledHeader } from "../css/StyledHeader";
+import { StyledDetailArea } from "../css/StyledDetailArea";
+import { StyledDetailContent } from "../css/StyledDetailContent";
 
 import { REGION_LIST } from "../utils/regionData";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
@@ -22,19 +22,6 @@ function DetailMapArea() {
     setRegion(REGION_LIST.find((region) => region.id === Number(id)));
   }, []);
 
-  useEffect(() => {
-    if (!map) return;
-    const ps = new window.kakao.maps.services.Places();
-
-    ps.keywordSearch("이태원 맛집", (data, status, _pagination) => {
-      if (status === window.kakao.maps.services.Status.OK) {
-        const bounds = new window.kakao.maps.LatLngBounds();
-        console.log(window.kakao.maps.getBounds());
-        console.log(bounds);
-      }
-    });
-  }, [map]);
-
   return (
     <StyledWrap>
       <StyledBlur />
@@ -42,16 +29,18 @@ function DetailMapArea() {
         <StyledDetailArea>
           <StyledHeader>MAP</StyledHeader>
           <StyledDetailContent>
-            {/* <div id="map" style={{ width: "100%", height: "100%" }} /> */}
-            <Map
-              center={{ lat: 33.5563, lng: 126.79581 }}
-              style={{ width: "100%", height: "100%" }}
-              onCreate={setMap}
-            >
-              {/* <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
+            {region ? (
+              <Map
+                center={{ lat: region.lat, lng: region.lng }}
+                level={region.level}
+                style={{ width: "100%", height: "100%" }}
+                onCreate={setMap}
+              >
+                {/* <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
                 <div style={{ color: "#000" }}>Hello World!</div>
               </MapMarker> */}
-            </Map>
+              </Map>
+            ) : null}
           </StyledDetailContent>
         </StyledDetailArea>
       </StyledMain>
