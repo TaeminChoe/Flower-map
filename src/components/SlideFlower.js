@@ -4,9 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled, { css } from "styled-components";
 
-import map_full from "../images/map_full.png";
-import map_line from "../images/map_line.png";
-import { StyledImage } from "../css/StyledImage";
 import { StyledHeader } from "../css/StyledHeader";
 
 import Korea from "./Korea";
