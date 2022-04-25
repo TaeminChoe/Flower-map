@@ -8,11 +8,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<ContentPage />} />
-        <Route path="/detail" exact element={<DetailPage />} />
+        <Route path="/detail/*" exact element={<DetailPage />} />
         <Route path="/*" element={<div>Page Not Found</div>} />
       </Routes>
     </BrowserRouter>
   );
+  d;
 }
 
 export default App;

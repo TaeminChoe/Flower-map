@@ -8,10 +8,10 @@ const Korea = ({ query, name }) => {
   const navi = useNavigate();
 
   const handleOnClick = (e) => {
-    console.log(name, e.target.className);
-    navi("/detail", {
-      state: null,
-    });
+    const id = REGION_LIST.find(
+      (region) => region.name === e.target.className
+    ).id;
+    navi(`/detail/${id}`);
   };
 
   return (
