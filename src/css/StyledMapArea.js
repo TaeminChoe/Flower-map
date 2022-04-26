@@ -9,6 +9,7 @@ const StyledMapArea = styled.section`
   border-radius: 10px;
   text-align: center;
   background-color: rgba(250, 255, 255, 0);
+
   /* 크기 */
   @media screen and (min-width: 1024px) {
     width: 45%;

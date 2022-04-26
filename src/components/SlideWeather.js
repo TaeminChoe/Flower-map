@@ -4,6 +4,9 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { WiDaySunnyOvercast, WiCloudyGusts } from "weather-icons-react";
 
+import { getWeather } from "../utils/api";
+import { useQuery } from "react-query";
+
 const StyledSlick = styled(Slider)`
   /* 공통스타일 */
   width: 100%;
@@ -149,6 +152,18 @@ function SlideWeather({ query }) {
       },
     ],
   };
+  const { isLoading, isError, data, error } = useQuery("weather", getWeather, {
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (e) => {
+      console.log(e.message);
+    },
+  });
+
+  useEffect(() => {
+    // getWeather(33.3869, 126.5652, 1);
+  }, []);
 
   return (
     <StyledSlick query={query} {...settings}>

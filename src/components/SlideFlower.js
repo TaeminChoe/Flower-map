@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 //css
 import { StyledHeader } from "../css/StyledHeader";
-
 import Korea from "./Korea";
 
 const StyledSlick = styled(Slider)`
