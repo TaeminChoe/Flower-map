@@ -107,7 +107,7 @@ const StyledDayInfo = styled.div`
   }
 `;
 
-function SlideWeather({ query }) {
+function SlideWeather() {
   const settings = {
     dots: true,
     infinite: true,
@@ -167,7 +167,7 @@ function SlideWeather({ query }) {
   }, []);
 
   return (
-    <StyledSlick query={query} {...settings}>
+    <StyledSlick {...settings}>
       <div>
         <WiDaySunnyOvercast
           className="weather-icon"

@@ -51,7 +51,7 @@ const StyledSlick = styled(Slider)`
   }
 `;
 
-function SlideFlower({ query }) {
+function SlideFlower() {
   const FLOWERS = ["벚꽃", "진달래", "개나리"];
   const settings = {
     dots: true,
@@ -100,7 +100,7 @@ function SlideFlower({ query }) {
   };
 
   return (
-    <StyledSlick query={query} {...settings}>
+    <StyledSlick {...settings}>
       {FLOWERS.map((flower, idx) => {
         return (
           <div key={`${idx}`}>
