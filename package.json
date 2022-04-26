@@ -9,6 +9,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-kakao-maps-sdk": "^1.0.6",
+    "react-open-weather": "^1.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "react-slick": "^0.28.1",
