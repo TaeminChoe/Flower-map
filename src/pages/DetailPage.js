@@ -1,11 +1,11 @@
 import DetailMapArea from "../components/DetailMapArea";
 import DetailWeatherArea from "../components/DetailWeatherArea";
 
-function DetailPage({ query }) {
+function DetailPage() {
   return (
     <>
       <DetailMapArea />
-      <DetailWeatherArea query={query} />
+      <DetailWeatherArea />
     </>
   );
 }

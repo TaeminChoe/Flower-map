@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const StyledMain = styled.main`
   /* 공통 스타일 */
@@ -13,23 +13,17 @@ const StyledMain = styled.main`
   z-index: 200;
 
   /* 색상 */
-  ${({ query }) => {
-    if (query == "pc") {
-      return css`
-        flex-flow: row;
-        padding: 1rem;
-        min-width: 100rem;
-      `;
-    } else if (query == "tablet") {
-      return css`
-        padding: 1rem;
-      `;
-    } else if (query == "mobile") {
-      return css`
-        padding: 0.2rem;
-      `;
-    }
-  }}
+  @media screen and (min-width: 1024px) {
+    flex-flow: row;
+    padding: 1rem;
+    min-width: 100rem;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    padding: 1rem;
+  }
+  @media screen and (max-width: 767px) {
+    padding: 0.2rem;
+  }
 `;
 
 export { StyledMain };

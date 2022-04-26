@@ -1,10 +1,9 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledRegion } from "../css/StyledRegion";
 
 import { REGION_LIST } from "../utils/regionData";
 
-const Korea = ({ query, name }) => {
+const Korea = ({ name }) => {
   const navi = useNavigate();
 
   const handleOnClick = (e) => {
@@ -15,7 +14,7 @@ const Korea = ({ query, name }) => {
   };
 
   return (
-    <StyledRegion query={query}>
+    <StyledRegion>
       {REGION_LIST.map((region) => region.name).map((region, idx) => {
         return (
           <div key={`${idx}`} className={region} onClick={handleOnClick} />

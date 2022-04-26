@@ -1,8 +1,7 @@
-import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { WiDaySunnyOvercast, WiCloudyGusts } from "weather-icons-react";
 
 const StyledSlick = styled(Slider)`
@@ -27,25 +26,19 @@ const StyledSlick = styled(Slider)`
   }
 
   /* 슬라이드 폰트 크기, <> 버튼 설정 */
-  ${({ query }) => {
-    if (query == "pc") {
-      return css`
-        font-size: 3rem;
-      `;
-    } else if (query == "tablet") {
-      return css`
-        font-size: 3rem;
-      `;
-    } else if (query == "mobile") {
-      return css`
-        font-size: 1.6rem;
-        .slick-prev:before,
-        .slick-next:before {
-          display: none;
-        }
-      `;
+  @media screen and (min-width: 1024px) {
+    font-size: 3rem;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: 3rem;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 1.6rem;
+    .slick-prev:before,
+    .slick-next:before {
+      display: none;
     }
-  }}
+  }
 `;
 
 const StyledWeatherInfo = styled.div`

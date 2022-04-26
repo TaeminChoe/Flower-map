@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const StyledRegion = styled.div`
   margin: 50px auto;
@@ -12,23 +12,17 @@ const StyledRegion = styled.div`
   }
 
   /* width 지정 */
-  ${({ query }) => {
-    if (query == "pc") {
-      return css`
-        width: 50%;
-      `;
-    } else if (query == "tablet") {
-      return css`
-        width: 50%;
-      `;
-    } else if (query == "mobile") {
-      return css`
-        width: 80%;
-      `;
-    }
-  }}
+  @media screen and (min-width: 1024px) {
+    width: 50%;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 767px) {
+    width: 80%;
+  }
 
-  &>div {
+  & > div {
     /* 공통스타일 */
     position: absolute;
     background-color: #eee;
