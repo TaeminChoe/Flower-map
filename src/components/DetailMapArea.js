@@ -6,11 +6,9 @@ import { StyledMain } from "../css/StyledMain";
 import { StyledHeader } from "../css/StyledHeader";
 import { StyledDetailArea } from "../css/StyledDetailArea";
 import { StyledDetailContent } from "../css/StyledDetailContent";
-
+//util
 import { REGION_LIST } from "../utils/regionData";
-import { Map, MapMarker } from "react-kakao-maps-sdk";
-
-// components
+import { Map } from "react-kakao-maps-sdk";
 
 function DetailMapArea() {
   const location = useLocation();
