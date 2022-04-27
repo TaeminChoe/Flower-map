@@ -98,6 +98,7 @@ function SlideWeather() {
       },
     ],
   };
+  console.log("test");
 
   // const { isLoading, isError, data, error } = useQuery(
   //   "weather",
