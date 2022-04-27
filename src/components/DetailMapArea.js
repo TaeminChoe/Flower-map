@@ -14,7 +14,6 @@ import { Map } from "react-kakao-maps-sdk";
 function DetailMapArea() {
   const location = useLocation();
   const [region, setRegion] = useState();
-  const [map, setMap] = useState();
 
   useEffect(() => {
     const id = location.pathname.split("/")[2];
@@ -22,7 +21,7 @@ function DetailMapArea() {
   }, []);
 
   if (region) {
-    console.log(region);
+    // console.log(region);
   }
 
   return (

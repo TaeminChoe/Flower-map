@@ -6,10 +6,16 @@ const ONE_CALL = "https://api.openweathermap.org/data/2.5/onecall";
 export const getWeather = async (lat, lng) => {
   axios({
     url: ONE_CALL,
-    params: { lat: lat, lon: lng, exclude: "daily", appid: API_KEY },
+    params: {
+      lat: lat,
+      lon: lng,
+      exclude: "current",
+      appid: API_KEY,
+      units: "metric",
+    },
   })
-    .then((res) => console.log(res))
+    .then((res) => console.log("weather res:: ", res.data))
     .catch((e) => {
-      console.log(e);
+      console.log("axios error :: ", e);
     });
 };
