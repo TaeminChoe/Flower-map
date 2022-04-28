@@ -1,17 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { WiDaySunnyOvercast, WiCloudyGusts } from "weather-icons-react";
+import {
+  WiDaySunnyOvercast,
+  WiRain,
+  WiCloudy,
+  WiSnowflakeCold,
+  WiLightning,
+  WiRaindrops,
+} from "weather-icons-react";
+import axios from "axios";
 // import { useQuery } from "react-query";
 //css
 import { StyledWeatherInfo } from "../css/StyledWeatherInfo";
 import { StyledDayInfo } from "../css/StyledDayInfo";
 //util
-import { getWeather } from "../utils/api";
 import { REGION_LIST } from "../utils/regionData";
+import { WEATHER_LIST } from "../utils/weatherData";
 
 const StyledSlick = styled(Slider)`
   /* 공통스타일 */
@@ -53,6 +61,8 @@ const StyledSlick = styled(Slider)`
 function SlideWeather() {
   const location = useLocation();
   const [region, setRegion] = useState();
+  const [weatherObj, setWeatherObj] = useState();
+  const [dailyWeatherData, setDailyWeatherData] = useState();
   const settings = {
     dots: true,
     infinite: true,
@@ -99,9 +109,33 @@ function SlideWeather() {
     ],
   };
 
+  const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
+  const ONE_CALL = "https://api.openweathermap.org/data/2.5/onecall";
+
+  async function getWeatherApi(lat, lng) {
+    await axios({
+      url: ONE_CALL,
+      params: {
+        lat: lat,
+        lon: lng,
+        exclude: "current",
+        appid: API_KEY,
+        units: "metric",
+      },
+    })
+      .then((res) => {
+        setWeatherObj(res.data.daily);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      })
+      .finally(() => parseWeatherObj());
+  }
+
+  //-----------------------------------------------------useQuery 나쁜놈
   // const { isLoading, isError, data, error } = useQuery(
   //   "weather",
-  //   getWeather(region.lat, region.lng),
+  //   getWeatherApi(region.lat, region.lng),
   //   {
   //     onSuccess: (data) => {
   //       console.log("query weather :: ", data);
@@ -111,89 +145,117 @@ function SlideWeather() {
   //     },
   //   }
   // );
+  //-----------------------------------------------------useQuery 나쁜놈
+
+  const parseWeatherObj = (weatherObj) => {
+    if (!weatherObj) {
+      setDailyWeatherData(WEATHER_LIST);
+    } else {
+      let dailyWeathers = [];
+      weatherObj.map((daily, index) => {
+        let dailyWeather = {
+          day: index,
+          weather: daily.weather[0].main,
+          temp: daily.temp.day,
+          feels: daily.feels_like.day,
+          wind: daily.wind_speed,
+        };
+        dailyWeathers.push(dailyWeather);
+      });
+      setDailyWeatherData(dailyWeathers);
+    }
+  };
 
   useEffect(() => {
     const id = location.pathname.split("/")[2];
     setRegion(REGION_LIST.find((region) => region.id === Number(id)));
   }, []);
 
-  if (region) {
-    getWeather(region.lat, region.lng);
-  }
+  useEffect(() => {
+    if (!region) return;
+    getWeatherApi(region.lat, region.lng);
+  }, [region]);
+
+  useEffect(() => {
+    if (!weatherObj) return;
+    parseWeatherObj(weatherObj);
+  }, [weatherObj]);
+
+  useEffect(() => {
+    if (!dailyWeatherData) return;
+    console.log("dailyWeatherData", dailyWeatherData);
+  }, [dailyWeatherData]);
 
   return (
     <StyledSlick {...settings}>
-      <div>
-        <WiDaySunnyOvercast
-          className="weather-icon"
-          style={{ color: "gold" }}
-        />
-        <StyledWeatherInfo>
-          <h1>28°</h1>
-          <div className="div-wrap">
-            <h3>Details</h3>
-            <hr />
-            <div className="ui-wrap">
-              <ul>
-                <li>
-                  <h4>FEELS</h4>
-                </li>
-                <li>
-                  <h4>WIND</h4>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <h4>27°</h4>
-                </li>
-                <li>
-                  <h4>30.2km/s</h4>
-                </li>
-              </ul>
+      {dailyWeatherData &&
+        dailyWeatherData.map((data, index) => {
+          return (
+            <div key={data.day + "_key"}>
+              {data.weather == "Clear" && (
+                <WiDaySunnyOvercast
+                  className="weather-icon"
+                  style={{ color: "gold" }}
+                />
+              )}
+              {data.weather == "Clouds" && (
+                <WiCloudy className="weather-icon" style={{ color: "grey" }} />
+              )}
+              {data.weather == "Rain" && (
+                <WiRain className="weather-icon" style={{ color: "navy" }} />
+              )}
+              {data.weather == "Snow" && (
+                <WiSnowflakeCold
+                  className="weather-icon"
+                  style={{ color: "white" }}
+                />
+              )}
+              {data.weather == "Thunderstorm" && (
+                <WiLightning
+                  className="weather-icon"
+                  style={{ color: "pink" }}
+                />
+              )}
+              {data.weather == "	Drizzle" && (
+                <WiRaindrops
+                  className="weather-icon"
+                  style={{ color: "skyblue" }}
+                />
+              )}
+              <StyledWeatherInfo>
+                <h1>{data.temp + "°"}</h1>
+                <div className="div-wrap">
+                  <h3>Details</h3>
+                  <hr />
+                  <div className="ui-wrap">
+                    <ul>
+                      <li>
+                        <h4>FEELS</h4>
+                      </li>
+                      <li>
+                        <h4>WIND</h4>
+                      </li>
+                    </ul>
+                    <ul>
+                      <li>
+                        <h4>{data.feels + "°"}</h4>
+                      </li>
+                      <li>
+                        <h4>{data.wind + " km/s"}</h4>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </StyledWeatherInfo>
+              <StyledDayInfo>
+                <hr />
+                <h2>Monday</h2>
+                <hr />
+                <h2>{data.weather}</h2>
+              </StyledDayInfo>
             </div>
-          </div>
-        </StyledWeatherInfo>
-        <StyledDayInfo>
-          <hr />
-          <h2>Monday</h2>
-          <hr />
-          <h2>Morning</h2>
-        </StyledDayInfo>
-      </div>
-      <div>
-        <WiCloudyGusts className="weather-icon" style={{ color: "navy" }} />
-        <StyledWeatherInfo>
-          <h1>25°</h1>
-          <div className="div-wrap">
-            <h3>Details</h3>
-            <hr />
-            <div className="ui-wrap">
-              <ul>
-                <li>
-                  <h4>FEELS</h4>
-                </li>
-                <li>
-                  <h4>WIND</h4>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <h4>23°</h4>
-                </li>
-                <li>
-                  <h4>47.2km/s</h4>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </StyledWeatherInfo>
-        <StyledDayInfo>
-          <hr />
-          <h2>Tuesday</h2>
-          <hr />
-          <h2>Morning</h2>
-        </StyledDayInfo>
-      </div>
+          );
+        })}
     </StyledSlick>
   );
 }
