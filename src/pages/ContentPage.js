@@ -5,9 +5,8 @@ import MapArea from "../components/MapArea";
 import Loading from "./Loading";
 
 //css
-import { StyledWrap } from "../css/StyledWrap";
+import { StyledWrapMain } from "../css/StyledWrapMain";
 import { StyledMain } from "../css/StyledMain";
-import { StyledBlur } from "../css/StyledBlur";
 
 function ContentPage() {
   const [loading, setLoading] = useState(false);
@@ -25,13 +24,12 @@ function ContentPage() {
 
   return (
     <>
-      <StyledWrap>
-        <StyledBlur />
+      <StyledWrapMain>
         <StyledMain>
           <Header />
           <MapArea />
         </StyledMain>
-      </StyledWrap>
+      </StyledWrapMain>
     </>
   );
 }

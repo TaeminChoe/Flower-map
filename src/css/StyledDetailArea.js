@@ -10,6 +10,10 @@ const StyledDetailArea = styled.section`
   margin: 1rem 0;
   padding: 1rem 0;
   border-radius: 10px;
+  @media screen and (min-width: 1024px) {
+    width: 45%;
+    margin: 1rem;
+  }
 `;
 
 export { StyledDetailArea };

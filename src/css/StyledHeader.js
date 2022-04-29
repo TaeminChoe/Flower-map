@@ -11,8 +11,13 @@ const StyledHeader = styled.header`
   justify-content: center;
   color: white;
   text-align: center;
+  font-family: "Libre Bodoni", serif;
   h3 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+  }
+  p {
+    padding-top: 1rem;
+    font-size: 2rem;
   }
   /* 폰트크기 */
   @media screen and (min-width: 1024px) {
@@ -28,15 +33,14 @@ const StyledHeader = styled.header`
   @media screen and (max-width: 767px) {
     height: 1rem;
     padding: 1rem 0rem;
-    margin: 1rem 0rem;
-    font-size: 3rem;
+    font-size: 2.5rem;
     h3 {
       font-size: 2rem;
     }
-  }
-  p {
-    padding-top: 1rem;
-    font-size: 1rem;
+    p {
+      padding-top: 1rem;
+      font-size: 1rem;
+    }
   }
 `;
 

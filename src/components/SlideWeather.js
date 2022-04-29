@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -45,9 +45,33 @@ const StyledSlick = styled(Slider)`
   /* 슬라이드 폰트 크기, <> 버튼 설정 */
   @media screen and (min-width: 1024px) {
     font-size: 3rem;
+    .weather-icon {
+      font-size: 17rem;
+    }
+    .slick-prev {
+      left: -12px;
+    }
+    .slick-prev:before {
+      left: -10px;
+    }
+    .slick-next {
+      right: 17px;
+    }
+    .slick-next:before {
+      right: -25px;
+    }
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     font-size: 3rem;
+    .weather-icon {
+      font-size: 20rem;
+    }
+    .slick-prev {
+      left: -12px;
+    }
+    .slick-next {
+      right: 17px;
+    }
   }
   @media screen and (max-width: 767px) {
     font-size: 1.6rem;
@@ -195,14 +219,17 @@ function SlideWeather() {
               {data.weather == "Clear" && (
                 <WiDaySunnyOvercast
                   className="weather-icon"
-                  style={{ color: "gold" }}
+                  style={{ color: "#f3d94f" }}
                 />
               )}
               {data.weather == "Clouds" && (
-                <WiCloudy className="weather-icon" style={{ color: "grey" }} />
+                <WiCloudy
+                  className="weather-icon"
+                  style={{ color: "rgb(161 148 138)" }}
+                />
               )}
               {data.weather == "Rain" && (
-                <WiRain className="weather-icon" style={{ color: "navy" }} />
+                <WiRain className="weather-icon" style={{ color: "#8ad0ce" }} />
               )}
               {data.weather == "Snow" && (
                 <WiSnowflakeCold
@@ -249,9 +276,10 @@ function SlideWeather() {
               </StyledWeatherInfo>
               <StyledDayInfo>
                 <hr />
-                <h2>Monday</h2>
+                <h2>Wednesday</h2>
                 <hr />
                 <h2>{data.weather}</h2>
+                <hr />
               </StyledDayInfo>
             </div>
           );
