@@ -13,7 +13,7 @@ export const StyledWrapMain = styled.div`
   align-items: center;
   justify-content: center;
   background-size: cover;
-  @media screen and (min-width: 1024px) {
-    height: 100vh;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    height: 130vh;
   }
 `;
