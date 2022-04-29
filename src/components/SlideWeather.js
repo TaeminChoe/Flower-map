@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import {
-  WiDaySunnyOvercast,
+  WiDaySunny,
   WiRain,
   WiCloudy,
   WiSnowflakeCold,
@@ -133,6 +133,7 @@ function SlideWeather() {
     ],
   };
 
+  /* key url for openWeatherAPI */
   const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
   const ONE_CALL = "https://api.openweathermap.org/data/2.5/onecall";
 
@@ -171,6 +172,27 @@ function SlideWeather() {
   // );
   //-----------------------------------------------------useQuery 나쁜놈
 
+  useEffect(() => {
+    const id = location.pathname.split("/")[2];
+    setRegion(REGION_LIST.find((region) => region.id === Number(id)));
+  }, []);
+
+  useEffect(() => {
+    if (!region) return;
+    getWeatherApi(region.lat, region.lng);
+  }, [region]);
+
+  useEffect(() => {
+    if (!weatherObj) return;
+    parseWeatherObj(weatherObj);
+  }, [weatherObj]);
+
+  useEffect(() => {
+    if (!dailyWeatherData) return;
+    // console.log("dailyWeatherData", dailyWeatherData);
+  }, [dailyWeatherData]);
+
+  /* weather obj parse from openWeatherAPI */
   const parseWeatherObj = (weatherObj) => {
     if (!weatherObj) {
       setDailyWeatherData(WEATHER_LIST);
@@ -190,99 +212,94 @@ function SlideWeather() {
     }
   };
 
-  useEffect(() => {
-    const id = location.pathname.split("/")[2];
-    setRegion(REGION_LIST.find((region) => region.id === Number(id)));
-  }, []);
+  /* weather icon style obj */
+  const iconStyle = {
+    Clear: <WiDaySunny className="weather-icon" style={{ color: "#f3d94f" }} />,
+    Clouds: (
+      <WiCloudy
+        className="weather-icon"
+        style={{ color: "rgb(161 148 138)" }}
+      />
+    ),
+    Rain: <WiRain className="weather-icon" style={{ color: "#8ad0ce" }} />,
+    Snow: (
+      <WiSnowflakeCold className="weather-icon" style={{ color: "white" }} />
+    ),
+    Thunderstorm: (
+      <WiLightning className="weather-icon" style={{ color: "pink" }} />
+    ),
+    Drizzle: (
+      <WiRaindrops className="weather-icon" style={{ color: "skyblue" }} />
+    ),
+  };
 
-  useEffect(() => {
-    if (!region) return;
-    getWeatherApi(region.lat, region.lng);
-  }, [region]);
+  /* get Day of the week */
+  const getDay = (dayNumber) => {
+    var today = new Date();
+    var dataDate = new Date(today.setDate(today.getDate() + dayNumber));
+    var year = dataDate.getFullYear();
+    var mon =
+      dataDate.getMonth() + 1 > 9
+        ? "" + (dataDate.getMonth() + 1)
+        : "0" + (dataDate.getMonth() + 1);
+    var day =
+      dataDate.getDate() + dayNumber > 9
+        ? "" + dataDate.getDate()
+        : "0" + dataDate.getDate();
 
-  useEffect(() => {
-    if (!weatherObj) return;
-    parseWeatherObj(weatherObj);
-  }, [weatherObj]);
-
-  useEffect(() => {
-    if (!dailyWeatherData) return;
-    console.log("dailyWeatherData", dailyWeatherData);
-  }, [dailyWeatherData]);
+    var setDate = year + "." + mon + "." + day;
+    return setDate;
+  };
 
   return (
     <StyledSlick {...settings}>
       {dailyWeatherData &&
         dailyWeatherData.map((data, index) => {
-          return (
-            <div key={data.day + "_key"}>
-              {data.weather == "Clear" && (
-                <WiDaySunnyOvercast
-                  className="weather-icon"
-                  style={{ color: "#f3d94f" }}
-                />
-              )}
-              {data.weather == "Clouds" && (
-                <WiCloudy
-                  className="weather-icon"
-                  style={{ color: "rgb(161 148 138)" }}
-                />
-              )}
-              {data.weather == "Rain" && (
-                <WiRain className="weather-icon" style={{ color: "#8ad0ce" }} />
-              )}
-              {data.weather == "Snow" && (
-                <WiSnowflakeCold
-                  className="weather-icon"
-                  style={{ color: "white" }}
-                />
-              )}
-              {data.weather == "Thunderstorm" && (
-                <WiLightning
-                  className="weather-icon"
-                  style={{ color: "pink" }}
-                />
-              )}
-              {data.weather == "	Drizzle" && (
-                <WiRaindrops
-                  className="weather-icon"
-                  style={{ color: "skyblue" }}
-                />
-              )}
-              <StyledWeatherInfo>
-                <h1>{data.temp + "°"}</h1>
-                <div className="div-wrap">
-                  <h3>Details</h3>
-                  <hr />
-                  <div className="ui-wrap">
-                    <ul>
-                      <li>
-                        <h4>FEELS</h4>
-                      </li>
-                      <li>
-                        <h4>WIND</h4>
-                      </li>
-                    </ul>
-                    <ul>
-                      <li>
-                        <h4>{data.feels + "°"}</h4>
-                      </li>
-                      <li>
-                        <h4>{data.wind + " km/s"}</h4>
-                      </li>
-                    </ul>
-                  </div>
+          const weatherIcon = iconStyle[`${data.weather}`];
+          if (!weatherIcon) {
+            weatherIcon = iconStyle["Clear"];
+          }
+          if (weatherIcon) {
+            return (
+              <div key={data.day + "_key"}>
+                <div key={data.day + "_key"}>
+                  {iconStyle[`${data.weather}`]}
                 </div>
-              </StyledWeatherInfo>
-              <StyledDayInfo>
-                <hr />
-                <h2>Wednesday</h2>
-                <hr />
-                <h2>{data.weather}</h2>
-                <hr />
-              </StyledDayInfo>
-            </div>
-          );
+                <StyledWeatherInfo>
+                  <h1>{data.temp + "°"}</h1>
+                  <div className="div-wrap">
+                    <h3>Details</h3>
+                    <hr />
+                    <div className="ui-wrap">
+                      <ul>
+                        <li>
+                          <h4>FEELS</h4>
+                        </li>
+                        <li>
+                          <h4>WIND</h4>
+                        </li>
+                      </ul>
+                      <ul>
+                        <li>
+                          <h4>{data.feels + "°"}</h4>
+                        </li>
+                        <li>
+                          <h4>{data.wind + " km/s"}</h4>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </StyledWeatherInfo>
+                <StyledDayInfo>
+                  <hr />
+                  <h2>{getDay(data.day)}</h2>
+                  <hr />
+                  <h2>{data.weather}</h2>
+                  <hr />
+                </StyledDayInfo>
+              </div>
+            );
+          }
         })}
     </StyledSlick>
   );
