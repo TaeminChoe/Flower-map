@@ -41,7 +41,9 @@ const StyledSlick = styled(Slider)`
   .slick-next:before {
     font-size: 3rem;
   }
-
+  .slick-dots button::before {
+    color: #a5a5a5;
+  }
   /* 슬라이드 폰트 크기, <> 버튼 설정 */
   @media screen and (min-width: 1024px) {
     font-size: 3rem;
