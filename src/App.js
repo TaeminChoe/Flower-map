@@ -51,8 +51,6 @@ const Content = () => {
   const [transitionStage, setTransitionStage] = useState("fadeIn");
 
   useEffect(() => {
-    console.log(location);
-    console.log(displayLocation);
     if (location !== displayLocation) setTransitionStage("fadeOut");
   }, [location, displayLocation]);
 
@@ -60,7 +58,6 @@ const Content = () => {
     <TransitionWrapper
       className={`${transitionStage}`}
       onAnimationEnd={() => {
-        console.log("animation end");
         if (transitionStage === "fadeOut") {
           setTransitionStage("fadeIn");
           setDisplayLocation(location);

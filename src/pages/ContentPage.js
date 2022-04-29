@@ -10,7 +10,7 @@ import { StyledMain } from "../css/StyledMain";
 import { StyledBlur } from "../css/StyledBlur";
 
 function ContentPage() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   /** 로딩 화면 지연 */
   useEffect(() => {

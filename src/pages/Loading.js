@@ -5,7 +5,7 @@ const Container = styled.div`
   background-size: 100% 100%;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   animation-name: appear;
   animation-duration: 3s;
 
@@ -13,11 +13,11 @@ const Container = styled.div`
     0% {
       opacity: 0;
     }
-    50% {
+    70% {
       opacity: 1;
     }
     100% {
-      opacity: 0.5;
+      opacity: 0.8;
     }
   }
 `;
