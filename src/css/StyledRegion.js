@@ -16,7 +16,7 @@ const StyledRegion = styled.div`
     width: 50%;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 70%;
+    width: 60%;
   }
   @media screen and (max-width: 767px) {
     width: 80%;
