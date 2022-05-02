@@ -17,6 +17,7 @@ const StyledMain = styled.main`
     flex-flow: row;
     padding: 1rem;
     min-width: 100rem;
+    justify-content: center;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     padding: 1rem;

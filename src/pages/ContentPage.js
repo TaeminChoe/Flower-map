@@ -7,9 +7,8 @@ import loadingState from "../atom";
 import { useRecoilState } from "recoil";
 
 //css
-import { StyledWrap } from "../css/StyledWrap";
+import { StyledWrapMain } from "../css/StyledWrapMain";
 import { StyledMain } from "../css/StyledMain";
-import { StyledBlur } from "../css/StyledBlur";
 
 function ContentPage() {
   const [loading, setLoading] = useRecoilState(loadingState);
@@ -27,13 +26,12 @@ function ContentPage() {
 
   return (
     <>
-      <StyledWrap>
-        <StyledBlur />
+      <StyledWrapMain>
         <StyledMain>
           <Header />
           <MapArea />
         </StyledMain>
-      </StyledWrap>
+      </StyledWrapMain>
     </>
   );
 }

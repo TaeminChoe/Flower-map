@@ -16,10 +16,10 @@ const StyledRegion = styled.div`
     width: 50%;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 50%;
+    width: 65%;
   }
-  @media screen and (max-width: 767px) {
-    width: 80%;
+  @media screen and (max-width: 768px) {
+    width: 88%;
   }
 
   & > div {
@@ -33,7 +33,7 @@ const StyledRegion = styled.div`
     left: 0;
 
     &:hover {
-      background-color: tomato;
+      background-color: #ffffff4d;
     }
   }
   .busan {

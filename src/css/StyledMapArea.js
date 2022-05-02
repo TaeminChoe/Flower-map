@@ -20,7 +20,7 @@ const StyledMapArea = styled.section`
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     height: 75vh;
     padding: 0.3rem 1.5rem;
-    margin-top: 1.8rem;
+    margin-top: 4.8rem;
   }
   @media screen and (max-width: 767px) {
     height: 75vh;

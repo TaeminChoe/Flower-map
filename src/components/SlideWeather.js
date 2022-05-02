@@ -1,11 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import {
-  WiDaySunnyOvercast,
+  WiDaySunny,
   WiRain,
   WiCloudy,
   WiSnowflakeCold,
@@ -41,13 +41,39 @@ const StyledSlick = styled(Slider)`
   .slick-next:before {
     font-size: 3rem;
   }
-
+  .slick-dots button::before {
+    color: #a5a5a5;
+  }
   /* 슬라이드 폰트 크기, <> 버튼 설정 */
   @media screen and (min-width: 1024px) {
     font-size: 3rem;
+    .weather-icon {
+      font-size: 17rem;
+    }
+    .slick-prev {
+      left: -12px;
+    }
+    .slick-prev:before {
+      left: -10px;
+    }
+    .slick-next {
+      right: 17px;
+    }
+    .slick-next:before {
+      right: -25px;
+    }
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     font-size: 3rem;
+    .weather-icon {
+      font-size: 20rem;
+    }
+    .slick-prev {
+      left: -12px;
+    }
+    .slick-next {
+      right: 17px;
+    }
   }
   @media screen and (max-width: 767px) {
     font-size: 1.6rem;
@@ -109,6 +135,7 @@ function SlideWeather() {
     ],
   };
 
+  /* key url for openWeatherAPI */
   const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
   const ONE_CALL = "https://api.openweathermap.org/data/2.5/onecall";
 
@@ -135,10 +162,19 @@ function SlideWeather() {
   //-----------------------------------------------------useQuery 나쁜놈
   // const { isLoading, isError, data, error } = useQuery(
   //   "weather",
-  //   getWeatherApi(region.lat, region.lng),
+  //   axios({
+  //     url: ONE_CALL,
+  //     params: {
+  //       lat: 37.7013,
+  //       lon: 128.4086,
+  //       exclude: "current",
+  //       appid: API_KEY,
+  //       units: "metric",
+  //     },
+  //   }),
   //   {
   //     onSuccess: (data) => {
-  //       console.log("query weather :: ", data);
+  //       console.log("query data :: ", data);
   //     },
   //     onError: (e) => {
   //       console.log("query error:: ", e.message);
@@ -147,33 +183,16 @@ function SlideWeather() {
   // );
   //-----------------------------------------------------useQuery 나쁜놈
 
-  const parseWeatherObj = (weatherObj) => {
-    if (!weatherObj) {
-      setDailyWeatherData(WEATHER_LIST);
-    } else {
-      let dailyWeathers = [];
-      weatherObj.map((daily, index) => {
-        let dailyWeather = {
-          day: index,
-          weather: daily.weather[0].main,
-          temp: daily.temp.day,
-          feels: daily.feels_like.day,
-          wind: daily.wind_speed,
-        };
-        dailyWeathers.push(dailyWeather);
-      });
-      setDailyWeatherData(dailyWeathers);
-    }
-  };
-
   useEffect(() => {
     const id = location.pathname.split("/")[2];
     setRegion(REGION_LIST.find((region) => region.id === Number(id)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (!region) return;
     getWeatherApi(region.lat, region.lng);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [region]);
 
   useEffect(() => {
@@ -183,45 +202,77 @@ function SlideWeather() {
 
   useEffect(() => {
     if (!dailyWeatherData) return;
-    console.log("dailyWeatherData", dailyWeatherData);
+    // console.log("dailyWeatherData", dailyWeatherData);
   }, [dailyWeatherData]);
+
+  /* weather obj parse from openWeatherAPI */
+  const parseWeatherObj = (weatherObj) => {
+    if (!weatherObj) {
+      setDailyWeatherData(WEATHER_LIST);
+    } else {
+      const dailyWeathers = weatherObj.map((daily, index) => {
+        return {
+          day: index,
+          weather: daily.weather[0].main,
+          temp: daily.temp.day,
+          feels: daily.feels_like.day,
+          wind: daily.wind_speed,
+        };
+      });
+      setDailyWeatherData(dailyWeathers);
+    }
+  };
+
+  /* weather icon style obj */
+  const iconStyle = {
+    Clear: <WiDaySunny className="weather-icon" style={{ color: "#f3d94f" }} />,
+    Clouds: (
+      <WiCloudy
+        className="weather-icon"
+        style={{ color: "rgb(161 148 138)" }}
+      />
+    ),
+    Rain: <WiRain className="weather-icon" style={{ color: "#8ad0ce" }} />,
+    Snow: (
+      <WiSnowflakeCold className="weather-icon" style={{ color: "white" }} />
+    ),
+    Thunderstorm: (
+      <WiLightning className="weather-icon" style={{ color: "pink" }} />
+    ),
+    Drizzle: (
+      <WiRaindrops className="weather-icon" style={{ color: "skyblue" }} />
+    ),
+  };
+
+  /* get Day of the week */
+  const getDay = (dayNumber) => {
+    var today = new Date();
+    var dataDate = new Date(today.setDate(today.getDate() + dayNumber));
+    var year = dataDate.getFullYear();
+    var mon =
+      dataDate.getMonth() + 1 > 9
+        ? "" + (dataDate.getMonth() + 1)
+        : "0" + (dataDate.getMonth() + 1);
+    var day =
+      dataDate.getDate() + dayNumber > 9
+        ? "" + dataDate.getDate()
+        : "0" + dataDate.getDate();
+
+    var setDate = year + "." + mon + "." + day;
+    return setDate;
+  };
 
   return (
     <StyledSlick {...settings}>
       {dailyWeatherData &&
         dailyWeatherData.map((data, index) => {
+          let weatherIcon = iconStyle[`${data.weather}`];
+          if (!weatherIcon) {
+            weatherIcon = iconStyle["Clear"];
+          }
           return (
             <div key={data.day + "_key"}>
-              {data.weather == "Clear" && (
-                <WiDaySunnyOvercast
-                  className="weather-icon"
-                  style={{ color: "gold" }}
-                />
-              )}
-              {data.weather == "Clouds" && (
-                <WiCloudy className="weather-icon" style={{ color: "grey" }} />
-              )}
-              {data.weather == "Rain" && (
-                <WiRain className="weather-icon" style={{ color: "navy" }} />
-              )}
-              {data.weather == "Snow" && (
-                <WiSnowflakeCold
-                  className="weather-icon"
-                  style={{ color: "white" }}
-                />
-              )}
-              {data.weather == "Thunderstorm" && (
-                <WiLightning
-                  className="weather-icon"
-                  style={{ color: "pink" }}
-                />
-              )}
-              {data.weather == "	Drizzle" && (
-                <WiRaindrops
-                  className="weather-icon"
-                  style={{ color: "skyblue" }}
-                />
-              )}
+              <div key={data.day + "_key"}>{iconStyle[`${data.weather}`]}</div>
               <StyledWeatherInfo>
                 <h1>{data.temp + "°"}</h1>
                 <div className="div-wrap">
@@ -249,9 +300,10 @@ function SlideWeather() {
               </StyledWeatherInfo>
               <StyledDayInfo>
                 <hr />
-                <h2>Monday</h2>
+                <h2>{getDay(data.day)}</h2>
                 <hr />
                 <h2>{data.weather}</h2>
+                <hr />
               </StyledDayInfo>
             </div>
           );
