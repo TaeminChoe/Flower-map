@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import MapArea from "../components/MapArea";
 import Loading from "./Loading";
+import loadingState from "../atom/atom";
+import { useRecoilState } from "recoil";
 
 //css
 import { StyledWrap } from "../css/StyledWrap";
@@ -10,7 +12,7 @@ import { StyledMain } from "../css/StyledMain";
 import { StyledBlur } from "../css/StyledBlur";
 
 function ContentPage() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useRecoilState(loadingState);
 
   /** 로딩 화면 지연 */
   useEffect(() => {
