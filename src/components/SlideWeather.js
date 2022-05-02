@@ -210,16 +210,14 @@ function SlideWeather() {
     if (!weatherObj) {
       setDailyWeatherData(WEATHER_LIST);
     } else {
-      let dailyWeathers = [];
-      weatherObj.forEach((daily, index) => {
-        let dailyWeather = {
+      const dailyWeathers = weatherObj.map((daily, index) => {
+        return {
           day: index,
           weather: daily.weather[0].main,
           temp: daily.temp.day,
           feels: daily.feels_like.day,
           wind: daily.wind_speed,
         };
-        dailyWeathers.push(dailyWeather);
       });
       setDailyWeatherData(dailyWeathers);
     }
@@ -272,47 +270,43 @@ function SlideWeather() {
           if (!weatherIcon) {
             weatherIcon = iconStyle["Clear"];
           }
-          if (weatherIcon) {
-            return (
-              <div key={data.day + "_key"}>
-                <div key={data.day + "_key"}>
-                  {iconStyle[`${data.weather}`]}
-                </div>
-                <StyledWeatherInfo>
-                  <h1>{data.temp + "°"}</h1>
-                  <div className="div-wrap">
-                    <h3>Details</h3>
-                    <hr />
-                    <div className="ui-wrap">
-                      <ul>
-                        <li>
-                          <h4>FEELS</h4>
-                        </li>
-                        <li>
-                          <h4>WIND</h4>
-                        </li>
-                      </ul>
-                      <ul>
-                        <li>
-                          <h4>{data.feels + "°"}</h4>
-                        </li>
-                        <li>
-                          <h4>{data.wind + " km/s"}</h4>
-                        </li>
-                      </ul>
-                    </div>
+          return (
+            <div key={data.day + "_key"}>
+              <div key={data.day + "_key"}>{iconStyle[`${data.weather}`]}</div>
+              <StyledWeatherInfo>
+                <h1>{data.temp + "°"}</h1>
+                <div className="div-wrap">
+                  <h3>Details</h3>
+                  <hr />
+                  <div className="ui-wrap">
+                    <ul>
+                      <li>
+                        <h4>FEELS</h4>
+                      </li>
+                      <li>
+                        <h4>WIND</h4>
+                      </li>
+                    </ul>
+                    <ul>
+                      <li>
+                        <h4>{data.feels + "°"}</h4>
+                      </li>
+                      <li>
+                        <h4>{data.wind + " km/s"}</h4>
+                      </li>
+                    </ul>
                   </div>
-                </StyledWeatherInfo>
-                <StyledDayInfo>
-                  <hr />
-                  <h2>{getDay(data.day)}</h2>
-                  <hr />
-                  <h2>{data.weather}</h2>
-                  <hr />
-                </StyledDayInfo>
-              </div>
-            );
-          }
+                </div>
+              </StyledWeatherInfo>
+              <StyledDayInfo>
+                <hr />
+                <h2>{getDay(data.day)}</h2>
+                <hr />
+                <h2>{data.weather}</h2>
+                <hr />
+              </StyledDayInfo>
+            </div>
+          );
         })}
     </StyledSlick>
   );
