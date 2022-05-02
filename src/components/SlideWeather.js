@@ -162,10 +162,19 @@ function SlideWeather() {
   //-----------------------------------------------------useQuery 나쁜놈
   // const { isLoading, isError, data, error } = useQuery(
   //   "weather",
-  //   getWeatherApi(region.lat, region.lng),
+  //   axios({
+  //     url: ONE_CALL,
+  //     params: {
+  //       lat: 37.7013,
+  //       lon: 128.4086,
+  //       exclude: "current",
+  //       appid: API_KEY,
+  //       units: "metric",
+  //     },
+  //   }),
   //   {
   //     onSuccess: (data) => {
-  //       console.log("query weather :: ", data);
+  //       console.log("query data :: ", data);
   //     },
   //     onError: (e) => {
   //       console.log("query error:: ", e.message);
@@ -177,11 +186,13 @@ function SlideWeather() {
   useEffect(() => {
     const id = location.pathname.split("/")[2];
     setRegion(REGION_LIST.find((region) => region.id === Number(id)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (!region) return;
     getWeatherApi(region.lat, region.lng);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [region]);
 
   useEffect(() => {
@@ -200,7 +211,7 @@ function SlideWeather() {
       setDailyWeatherData(WEATHER_LIST);
     } else {
       let dailyWeathers = [];
-      weatherObj.map((daily, index) => {
+      weatherObj.forEach((daily, index) => {
         let dailyWeather = {
           day: index,
           weather: daily.weather[0].main,
@@ -257,7 +268,7 @@ function SlideWeather() {
     <StyledSlick {...settings}>
       {dailyWeatherData &&
         dailyWeatherData.map((data, index) => {
-          const weatherIcon = iconStyle[`${data.weather}`];
+          let weatherIcon = iconStyle[`${data.weather}`];
           if (!weatherIcon) {
             weatherIcon = iconStyle["Clear"];
           }

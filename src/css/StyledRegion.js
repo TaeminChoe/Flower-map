@@ -33,7 +33,7 @@ const StyledRegion = styled.div`
     left: 0;
 
     &:hover {
-      background-color: #ffffff94;
+      background-color: #ffffff4d;
     }
   }
   .busan {

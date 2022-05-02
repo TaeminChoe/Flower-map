@@ -15,6 +15,7 @@ function DetailMapArea() {
   useEffect(() => {
     const id = location.pathname.split("/")[2];
     setRegion(REGION_LIST.find((region) => region.id === Number(id)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (region) {
