@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import MapArea from "../components/MapArea";
 import Loading from "./Loading";
-import loadingState from "../atom/atom";
+import loadingState from "../atom";
 import { useRecoilState } from "recoil";
 
 //css
