@@ -28,11 +28,11 @@ const Container = styled.div`
     0% {
       opacity: 0;
     }
-    70% {
+    80% {
       opacity: 1;
     }
     100% {
-      opacity: 0.8;
+      opacity: 0;
     }
   }
 `;
