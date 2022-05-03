@@ -4,6 +4,7 @@ import { RecoilRoot } from "recoil";
 import styled from "styled-components";
 import ContentPage from "./pages/ContentPage";
 import DetailPage from "./pages/DetailPage";
+import PageNotFound from "./components/PageNotFound";
 
 const TransitionWrapper = styled.div`
   &.fadeIn {
@@ -70,7 +71,7 @@ const Content = () => {
       <Routes location={displayLocation}>
         <Route path="/" element={<ContentPage />} />
         <Route path="/detail/*" exact element={<DetailPage />} />
-        <Route path="/*" element={<div>Page Not Found</div>} />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </TransitionWrapper>
   );

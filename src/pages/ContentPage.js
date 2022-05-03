@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 // components
 import Header from "../components/Header";
 import MapArea from "../components/MapArea";
@@ -18,6 +18,7 @@ function ContentPage() {
     setTimeout(() => {
       setLoading(false);
     }, 3000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
@@ -25,14 +26,12 @@ function ContentPage() {
   }
 
   return (
-    <>
-      <StyledWrapMain>
-        <StyledMain>
-          <Header />
-          <MapArea />
-        </StyledMain>
-      </StyledWrapMain>
-    </>
+    <StyledWrapMain>
+      <StyledMain>
+        <Header />
+        <MapArea />
+      </StyledMain>
+    </StyledWrapMain>
   );
 }
 

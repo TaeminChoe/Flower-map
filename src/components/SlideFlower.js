@@ -22,8 +22,13 @@ const StyledSlick = styled(Slider)`
     }
   }
   /* 슬라이드 <> 버튼 */
+  .slick-prev,
+  .slick-next {
+    z-index: 9999;
+  }
   .slick-prev:before,
   .slick-next:before {
+    z-index: 9999;
     font-size: 3rem;
   }
 
