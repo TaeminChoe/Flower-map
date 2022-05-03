@@ -1,8 +1,5 @@
 import styled from "styled-components";
-// import flower from "../images/flower.jpg";
-// import flower from "../images/flower2.jpg";
 import flower from "../images/flower4.jpg";
-// import flower from "../images/flower3.jpg";
 
 const StyledBlur = styled.div`
   width: 75%;

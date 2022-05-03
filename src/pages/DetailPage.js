@@ -6,15 +6,13 @@ import { StyledMain } from "../css/StyledMain";
 
 function DetailPage() {
   return (
-    <>
-      <StyledWrap>
-        <StyledBlur />
-        <StyledMain>
-          <DetailMapArea />
-          <DetailWeatherArea />
-        </StyledMain>
-      </StyledWrap>
-    </>
+    <StyledWrap>
+      <StyledBlur />
+      <StyledMain>
+        <DetailMapArea />
+        <DetailWeatherArea />
+      </StyledMain>
+    </StyledWrap>
   );
 }
 

@@ -27,6 +27,9 @@ const StyledMapArea = styled.section`
     padding: 0.3rem 0.5rem;
     margin: 1rem 0;
   }
+  @media screen and (max-height: 670px) {
+    width: 80%;
+  }
 `;
 
 export { StyledMapArea };

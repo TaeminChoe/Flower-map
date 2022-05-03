@@ -3,7 +3,7 @@ import { StyledRegion } from "../css/StyledRegion";
 
 import { REGION_LIST } from "../utils/regionData";
 
-const Korea = ({ name }) => {
+function Korea({ name }) {
   const navi = useNavigate();
 
   const handleOnClick = (e) => {
@@ -22,6 +22,6 @@ const Korea = ({ name }) => {
       })}
     </StyledRegion>
   );
-};
+}
 
 export default Korea;

@@ -52,9 +52,11 @@ const StyledSlick = styled(Slider)`
     }
     .slick-prev {
       left: -12px;
+      z-index: 9999;
     }
     .slick-prev:before {
       left: -10px;
+      z-index: 9999;
     }
     .slick-next {
       right: 17px;
@@ -246,26 +248,26 @@ function SlideWeather() {
 
   /* get Day of the week */
   const getDay = (dayNumber) => {
-    var today = new Date();
-    var dataDate = new Date(today.setDate(today.getDate() + dayNumber));
-    var year = dataDate.getFullYear();
-    var mon =
+    let today = new Date();
+    let dataDate = new Date(today.setDate(today.getDate() + dayNumber));
+    let year = dataDate.getFullYear();
+    let mon =
       dataDate.getMonth() + 1 > 9
         ? "" + (dataDate.getMonth() + 1)
         : "0" + (dataDate.getMonth() + 1);
-    var day =
+    let day =
       dataDate.getDate() + dayNumber > 9
         ? "" + dataDate.getDate()
         : "0" + dataDate.getDate();
 
-    var setDate = year + "." + mon + "." + day;
+    let setDate = year + "." + mon + "." + day;
     return setDate;
   };
 
   return (
     <StyledSlick {...settings}>
       {dailyWeatherData &&
-        dailyWeatherData.map((data, index) => {
+        dailyWeatherData.map((data) => {
           let weatherIcon = iconStyle[`${data.weather}`];
           if (!weatherIcon) {
             weatherIcon = iconStyle["Clear"];
