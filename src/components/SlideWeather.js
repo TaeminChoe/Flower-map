@@ -168,22 +168,6 @@ function SlideWeather() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  //   if (!region) return;
-  //   // getWeatherApi(region.lat, region.lng);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [region]);
-
-  // useEffect(() => {
-  //   if (!weatherObj) return;
-  //   parseWeatherObj(weatherObj);
-  // }, [weatherObj]);
-
-  // useEffect(() => {
-  //   if (!dailyWeatherData) return;
-  // console.log("dailyWeatherData", dailyWeatherData);
-  // }, [dailyWeatherData]);
-
   /* weather obj parse from openWeatherAPI */
   const parseWeatherObj = (weatherObj) => {
     if (!weatherObj) {
