@@ -153,7 +153,7 @@ function SlideWeather() {
     },
     {
       onSuccess: (data) => {
-        console.log("weather data :: ", data);
+        // console.log("weather data :: ", data);
         parseWeatherObj(data.daily);
       },
       onError: (e) => {
@@ -228,14 +228,8 @@ function SlideWeather() {
     let today = new Date();
     let dataDate = new Date(today.setDate(today.getDate() + dayNumber));
     let year = dataDate.getFullYear();
-    let mon =
-      dataDate.getMonth() + 1 > 9
-        ? "" + (dataDate.getMonth() + 1)
-        : "0" + (dataDate.getMonth() + 1);
-    let day =
-      dataDate.getDate() + dayNumber > 9
-        ? "" + dataDate.getDate()
-        : "0" + dataDate.getDate();
+    let mon = String(dataDate.getMonth() + 1).padStart(2, "0");
+    let day = String(dataDate.getDate()).padStart(2, "0");
 
     let setDate = year + "." + mon + "." + day;
     return setDate;
