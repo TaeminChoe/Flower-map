@@ -13,7 +13,7 @@ import {
   WiRaindrops,
 } from "weather-icons-react";
 import axios from "axios";
-// import { useQuery } from "react-query";
+import { useQuery } from "react-query";
 //css
 import { StyledWeatherInfo } from "../css/StyledWeatherInfo";
 import { StyledDayInfo } from "../css/StyledDayInfo";
@@ -89,7 +89,7 @@ const StyledSlick = styled(Slider)`
 function SlideWeather() {
   const location = useLocation();
   const [region, setRegion] = useState();
-  const [weatherObj, setWeatherObj] = useState();
+  // const [weatherObj, setWeatherObj] = useState();
   const [dailyWeatherData, setDailyWeatherData] = useState();
   const settings = {
     dots: true,
@@ -141,49 +141,26 @@ function SlideWeather() {
   const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
   const ONE_CALL = "https://api.openweathermap.org/data/2.5/onecall";
 
-  async function getWeatherApi(lat, lng) {
-    await axios({
-      url: ONE_CALL,
-      params: {
-        lat: lat,
-        lon: lng,
-        exclude: "current",
-        appid: API_KEY,
-        units: "metric",
+  const { isLoading, isError, data, error } = useQuery(
+    "getWeather",
+    async () => {
+      const { data } = await axios.get(
+        region
+          ? `${ONE_CALL}?lat=${region.lat}&lon=${region.lng}&exlude=current&appid=${API_KEY}&units=metric`
+          : `${ONE_CALL}?lat=36.3305&lon=128.7805&exlude=current&appid=${API_KEY}&units=metric`
+      );
+      return data;
+    },
+    {
+      onSuccess: (data) => {
+        console.log("weather data :: ", data);
+        parseWeatherObj(data.daily);
       },
-    })
-      .then((res) => {
-        setWeatherObj(res.data.daily);
-      })
-      .catch((e) => {
-        console.log(e.message);
-      })
-      .finally(() => parseWeatherObj());
-  }
-
-  //-----------------------------------------------------useQuery 나쁜놈
-  // const { isLoading, isError, data, error } = useQuery(
-  //   "weather",
-  //   axios({
-  //     url: ONE_CALL,
-  //     params: {
-  //       lat: 37.7013,
-  //       lon: 128.4086,
-  //       exclude: "current",
-  //       appid: API_KEY,
-  //       units: "metric",
-  //     },
-  //   }),
-  //   {
-  //     onSuccess: (data) => {
-  //       console.log("query data :: ", data);
-  //     },
-  //     onError: (e) => {
-  //       console.log("query error:: ", e.message);
-  //     },
-  //   }
-  // );
-  //-----------------------------------------------------useQuery 나쁜놈
+      onError: (e) => {
+        console.log("weather error:: ", e.message);
+      },
+    }
+  );
 
   useEffect(() => {
     const id = location.pathname.split("/")[2];
@@ -191,21 +168,21 @@ function SlideWeather() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (!region) return;
-    getWeatherApi(region.lat, region.lng);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [region]);
+  // useEffect(() => {
+  //   if (!region) return;
+  //   // getWeatherApi(region.lat, region.lng);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [region]);
 
-  useEffect(() => {
-    if (!weatherObj) return;
-    parseWeatherObj(weatherObj);
-  }, [weatherObj]);
+  // useEffect(() => {
+  //   if (!weatherObj) return;
+  //   parseWeatherObj(weatherObj);
+  // }, [weatherObj]);
 
-  useEffect(() => {
-    if (!dailyWeatherData) return;
-    // console.log("dailyWeatherData", dailyWeatherData);
-  }, [dailyWeatherData]);
+  // useEffect(() => {
+  //   if (!dailyWeatherData) return;
+  // console.log("dailyWeatherData", dailyWeatherData);
+  // }, [dailyWeatherData]);
 
   /* weather obj parse from openWeatherAPI */
   const parseWeatherObj = (weatherObj) => {
