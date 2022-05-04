@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -14,11 +13,13 @@ import {
 } from "weather-icons-react";
 import axios from "axios";
 import { useQuery } from "react-query";
+import { useRecoilValue } from "recoil";
 //css
 import { StyledWeatherInfo } from "../css/StyledWeatherInfo";
 import { StyledDayInfo } from "../css/StyledDayInfo";
+//recoil
+import { regionState } from "../atom";
 //util
-import { REGION_LIST } from "../utils/regionData";
 import { WEATHER_LIST } from "../utils/weatherData";
 
 const StyledSlick = styled(Slider)`
@@ -87,8 +88,7 @@ const StyledSlick = styled(Slider)`
 `;
 
 function SlideWeather() {
-  const location = useLocation();
-  const [region, setRegion] = useState();
+  const region = useRecoilValue(regionState);
   // const [weatherObj, setWeatherObj] = useState();
   const [dailyWeatherData, setDailyWeatherData] = useState();
   const settings = {
@@ -141,13 +141,13 @@ function SlideWeather() {
   const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
   const ONE_CALL = "https://api.openweathermap.org/data/2.5/onecall";
 
-  const { isLoading, isError, data, error } = useQuery(
+  useQuery(
     "getWeather",
     async () => {
       const { data } = await axios.get(
         region
           ? `${ONE_CALL}?lat=${region.lat}&lon=${region.lng}&exlude=current&appid=${API_KEY}&units=metric`
-          : `${ONE_CALL}?lat=36.3305&lon=128.7805&exlude=current&appid=${API_KEY}&units=metric`
+          : `${ONE_CALL}?lat=36.3305&lon=128.7805&exlude=current&appid=${API_KEY}&units=metric` //서울 데이터
       );
       return data;
     },
@@ -161,12 +161,6 @@ function SlideWeather() {
       },
     }
   );
-
-  useEffect(() => {
-    const id = location.pathname.split("/")[2];
-    setRegion(REGION_LIST.find((region) => region.id === Number(id)));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   /* weather obj parse from openWeatherAPI */
   const parseWeatherObj = (weatherObj) => {
