@@ -158,7 +158,6 @@ function SlideWeather() {
 
   useQuery(`${region ? region.name : "ready"}_weather`, getData, {
     onSuccess: (data) => {
-      console.log("weather data :: ", data);
       parseWeatherObj(data.daily);
     },
     onError: (e) => {
