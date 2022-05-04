@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,7 +14,7 @@ import {
 } from "../utils/icons";
 import axios from "axios";
 import { useQuery } from "react-query";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 //css
 import { StyledWeatherInfo } from "../css/StyledWeatherInfo";
 import { StyledDayInfo } from "../css/StyledDayInfo";
@@ -21,6 +22,7 @@ import { StyledDayInfo } from "../css/StyledDayInfo";
 import { regionState } from "../atom";
 //util
 import { WEATHER_LIST } from "../utils/weatherData";
+import { REGION_LIST } from "../utils/regionData";
 
 const StyledSlick = styled(Slider)`
   /* 공통스타일 */
@@ -88,8 +90,12 @@ const StyledSlick = styled(Slider)`
 `;
 
 function SlideWeather() {
-  const region = useRecoilValue(regionState);
+  const location = useLocation();
+  const [region, setRegion] = useRecoilState(regionState);
   const [dailyWeatherData, setDailyWeatherData] = useState();
+  /* key url for openWeatherAPI */
+  const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
+  const ONE_CALL = "https://api.openweathermap.org/data/2.5/onecall";
   const settings = {
     dots: true,
     infinite: true,
@@ -135,17 +141,20 @@ function SlideWeather() {
       },
     ],
   };
+  const id = location.pathname.split("/")[2];
 
-  /* key url for openWeatherAPI */
-  const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
-  const ONE_CALL = "https://api.openweathermap.org/data/2.5/onecall";
+  useEffect(() => {
+    console.log(region);
+  }, [region]);
+
   useQuery(
-    `weather_${region.name}`,
+    `${region ? region.name : "ready"}_weather`,
     async () => {
+      console.log(region);
       const { data } = await axios.get(
         region
           ? `${ONE_CALL}?lat=${region.lat}&lon=${region.lng}&exlude=current&appid=${API_KEY}&units=metric`
-          : `${ONE_CALL}?lat=36.3305&lon=128.7805&exlude=current&appid=${API_KEY}&units=metric` //서울 데이터
+          : setRegion(REGION_LIST.find((region) => region.id === Number(id)))
       );
       return data;
     },
