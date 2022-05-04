@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -142,10 +142,6 @@ function SlideWeather() {
     ],
   };
   const id = location.pathname.split("/")[2];
-
-  useEffect(() => {
-    console.log(region);
-  }, [region]);
 
   useQuery(
     `${region ? region.name : "ready"}_weather`,
