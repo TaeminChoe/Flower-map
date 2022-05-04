@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -141,28 +141,31 @@ function SlideWeather() {
       },
     ],
   };
-  const id = location.pathname.split("/")[2];
 
-  useQuery(
-    `${region ? region.name : "ready"}_weather`,
-    async () => {
-      const { data } = await axios.get(
-        region
-          ? `${ONE_CALL}?lat=${region.lat}&lon=${region.lng}&exlude=current&appid=${API_KEY}&units=metric`
-          : setRegion(REGION_LIST.find((region) => region.id === Number(id)))
-      );
-      return data;
-    },
-    {
-      onSuccess: (data) => {
-        // console.log("weather data :: ", data);
-        parseWeatherObj(data.daily);
-      },
-      onError: (e) => {
-        console.log("weather error:: ", e.message);
-      },
+  useEffect(() => {
+    const id = location.pathname.split("/")[2];
+    if (!region) {
+      setRegion(REGION_LIST.find((region) => region.id === Number(id)));
     }
-  );
+  }, []);
+
+  const getData = async () => {
+    const { data } = await axios.get(
+      `${ONE_CALL}?lat=${region.lat}&lon=${region.lng}&exlude=current&appid=${API_KEY}&units=metric`
+    );
+    return data;
+  };
+
+  useQuery(`${region ? region.name : "ready"}_weather`, getData, {
+    onSuccess: (data) => {
+      console.log("weather data :: ", data);
+      parseWeatherObj(data.daily);
+    },
+    onError: (e) => {
+      console.log("weather error:: ", e.message);
+    },
+    enabled: !!region,
+  });
 
   /* weather obj parse from openWeatherAPI */
   const parseWeatherObj = (weatherObj) => {
