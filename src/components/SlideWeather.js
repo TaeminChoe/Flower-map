@@ -150,7 +150,6 @@ function SlideWeather() {
   useQuery(
     `${region ? region.name : "ready"}_weather`,
     async () => {
-      console.log(region);
       const { data } = await axios.get(
         region
           ? `${ONE_CALL}?lat=${region.lat}&lon=${region.lng}&exlude=current&appid=${API_KEY}&units=metric`
