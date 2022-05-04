@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,7 +10,7 @@ import {
   WiSnowflakeCold,
   WiLightning,
   WiRaindrops,
-} from "weather-icons-react";
+} from "../utils/icons";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
@@ -89,7 +89,6 @@ const StyledSlick = styled(Slider)`
 
 function SlideWeather() {
   const region = useRecoilValue(regionState);
-  // const [weatherObj, setWeatherObj] = useState();
   const [dailyWeatherData, setDailyWeatherData] = useState();
   const settings = {
     dots: true,
@@ -140,9 +139,8 @@ function SlideWeather() {
   /* key url for openWeatherAPI */
   const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
   const ONE_CALL = "https://api.openweathermap.org/data/2.5/onecall";
-
   useQuery(
-    "getWeather",
+    `weather_${region.name}`,
     async () => {
       const { data } = await axios.get(
         region

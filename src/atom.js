@@ -1,5 +1,4 @@
 import { atom } from "recoil";
-import { REGION_LIST } from "./utils/regionData";
 
 const loadingState = atom({
   key: "loading",
@@ -7,7 +6,7 @@ const loadingState = atom({
 });
 const regionState = atom({
   key: "region",
-  default: REGION_LIST,
+  default: null,
 });
 
 export { loadingState, regionState };
