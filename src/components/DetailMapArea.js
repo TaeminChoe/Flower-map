@@ -1,26 +1,15 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 //css
 import { StyledHeader } from "../css/StyledHeader";
 import { StyledDetailArea } from "../css/StyledDetailArea";
 import { StyledDetailContent } from "../css/StyledDetailContent";
+//recoil
+import { regionState } from "../atom";
 //util
-import { REGION_LIST } from "../utils/regionData";
 import { Map } from "react-kakao-maps-sdk";
 
 function DetailMapArea() {
-  const location = useLocation();
-  const [region, setRegion] = useState();
-
-  useEffect(() => {
-    const id = location.pathname.split("/")[2];
-    setRegion(REGION_LIST.find((region) => region.id === Number(id)));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  if (region) {
-    // console.log(region);
-  }
+  const region = useRecoilValue(regionState);
 
   return (
     <StyledDetailArea>

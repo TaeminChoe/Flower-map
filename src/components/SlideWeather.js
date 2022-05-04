@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -11,15 +11,18 @@ import {
   WiSnowflakeCold,
   WiLightning,
   WiRaindrops,
-} from "weather-icons-react";
+} from "../utils/icons";
 import axios from "axios";
 import { useQuery } from "react-query";
+import { useRecoilState } from "recoil";
 //css
 import { StyledWeatherInfo } from "../css/StyledWeatherInfo";
 import { StyledDayInfo } from "../css/StyledDayInfo";
+//recoil
+import { regionState } from "../atom";
 //util
-import { REGION_LIST } from "../utils/regionData";
 import { WEATHER_LIST } from "../utils/weatherData";
+import { REGION_LIST } from "../utils/regionData";
 
 const StyledSlick = styled(Slider)`
   /* 공통스타일 */
@@ -88,9 +91,11 @@ const StyledSlick = styled(Slider)`
 
 function SlideWeather() {
   const location = useLocation();
-  const [region, setRegion] = useState();
-  // const [weatherObj, setWeatherObj] = useState();
+  const [region, setRegion] = useRecoilState(regionState);
   const [dailyWeatherData, setDailyWeatherData] = useState();
+  /* key url for openWeatherAPI */
+  const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
+  const ONE_CALL = "https://api.openweathermap.org/data/2.5/onecall";
   const settings = {
     dots: true,
     infinite: true,
@@ -137,36 +142,29 @@ function SlideWeather() {
     ],
   };
 
-  /* key url for openWeatherAPI */
-  const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
-  const ONE_CALL = "https://api.openweathermap.org/data/2.5/onecall";
-
-  const { isLoading, isError, data, error } = useQuery(
-    "getWeather",
-    async () => {
-      const { data } = await axios.get(
-        region
-          ? `${ONE_CALL}?lat=${region.lat}&lon=${region.lng}&exlude=current&appid=${API_KEY}&units=metric`
-          : `${ONE_CALL}?lat=36.3305&lon=128.7805&exlude=current&appid=${API_KEY}&units=metric`
-      );
-      return data;
-    },
-    {
-      onSuccess: (data) => {
-        // console.log("weather data :: ", data);
-        parseWeatherObj(data.daily);
-      },
-      onError: (e) => {
-        console.log("weather error:: ", e.message);
-      },
-    }
-  );
-
   useEffect(() => {
     const id = location.pathname.split("/")[2];
-    setRegion(REGION_LIST.find((region) => region.id === Number(id)));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (!region) {
+      setRegion(REGION_LIST.find((region) => region.id === Number(id)));
+    }
   }, []);
+
+  const getData = async () => {
+    const { data } = await axios.get(
+      `${ONE_CALL}?lat=${region.lat}&lon=${region.lng}&exlude=current&appid=${API_KEY}&units=metric`
+    );
+    return data;
+  };
+
+  useQuery(`${region ? region.name : "ready"}_weather`, getData, {
+    onSuccess: (data) => {
+      parseWeatherObj(data.daily);
+    },
+    onError: (e) => {
+      console.log("weather error:: ", e.message);
+    },
+    enabled: !!region,
+  });
 
   /* weather obj parse from openWeatherAPI */
   const parseWeatherObj = (weatherObj) => {
