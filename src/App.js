@@ -41,7 +41,7 @@ const TransitionWrapper = styled.div`
 function App() {
   return (
     <RecoilRoot>
-      <BrowserRouter>
+      <BrowserRouter basename="/Flower-map">
         <Content />
       </BrowserRouter>
     </RecoilRoot>

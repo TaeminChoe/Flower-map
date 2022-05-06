@@ -2,7 +2,7 @@
   "name": "flower-map",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://taeminchoe.github.io/Flower-map/",
+  "homepage": "https://taeminchoe.github.io/Flower-map",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
@@ -23,6 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "postbuild": "cp build/index.html build/404.html",
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"

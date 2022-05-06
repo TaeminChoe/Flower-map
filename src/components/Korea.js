@@ -20,9 +20,13 @@ function Korea() {
 
   return (
     <StyledRegion>
-      {REGION_LIST.map((region) => region.name).map((region, idx) => {
+      {REGION_LIST.map((region) => {
         return (
-          <div key={`${idx}`} className={region} onClick={handleOnClick} />
+          <div
+            key={region.id}
+            className={region.name}
+            onClick={handleOnClick}
+          />
         );
       })}
     </StyledRegion>
