@@ -8,7 +8,7 @@ const StyledDetailArea = styled.section`
   justify-content: center;
   align-items: center;
   margin: 1rem 0;
-  padding: 1rem 0;
+  padding: 2rem 0;
   border-radius: 10px;
   @media screen and (min-width: 1024px) {
     width: 45%;
