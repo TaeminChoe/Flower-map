@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledMapArea = styled.section`
   /* 공통스타일 */
-  width: 87%;
+  width: 80%;
   background-color: white;
   border: none;
   outline: none;
@@ -26,9 +26,6 @@ const StyledMapArea = styled.section`
     height: 75vh;
     padding: 0.3rem 0.5rem;
     margin: 1rem 0;
-  }
-  @media screen and (max-height: 670px) {
-    width: 80%;
   }
 `;
 
