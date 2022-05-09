@@ -8,6 +8,7 @@ import { regionState } from "../atom";
 import { REGION_LIST } from "../utils/regionData";
 
 function Korea({ name }) {
+  console.log(name);
   const setRegion = useSetRecoilState(regionState);
   const navi = useNavigate();
 
@@ -39,7 +40,7 @@ function Korea({ name }) {
     <StyledRegion>
       {REGION_LIST &&
         REGION_LIST.map((region) => {
-          // console.log(region.flowers[0].cherry);
+          console.log(region.flowers, name);
           // name과 region.flowers의 값(벚꽃, 개나리, 진달래)이 같은 것에 개화날짜 뿌려주어야 함
           return (
             <>
