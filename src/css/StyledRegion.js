@@ -1,18 +1,39 @@
 import styled from "styled-components";
 
 const StyledRegion = styled.div`
+  font-family: "Noto Serif KR", serif;
   margin: 50px auto;
   position: relative;
   display: flex;
-
   &:before {
     content: "";
     display: block;
     padding-top: 160%;
   }
-
+  &:hover {
+    cursor: pointer;
+  }
+  /**지역이름 공통스타일 */
+  .region-string {
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    padding: 3px;
+    font-size: 1rem;
+    opacity: 0.8;
+    z-index: 500;
+    border-radius: 15px;
+    line-height: 25px;
+    color: #605353;
+    background-color: #eee;
+    &:hover {
+      color: pink;
+      cursor: pointer;
+    }
+  }
   /* width 지정 */
   @media screen and (min-width: 1024px) {
+    background-color: rgba(0, 0, 0, 0);
     width: 50%;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -20,8 +41,15 @@ const StyledRegion = styled.div`
   }
   @media screen and (max-width: 768px) {
     width: 88%;
+    .region-string {
+      position: absolute;
+      width: 65px;
+      height: 12px;
+      padding: 3px;
+      font-size: 0.6rem;
+      line-height: 10px;
+    }
   }
-
   & > div {
     /* 공통스타일 */
     position: absolute;
@@ -31,10 +59,76 @@ const StyledRegion = styled.div`
     height: 100%;
     top: 0;
     left: 0;
+  }
 
-    &:hover {
-      background-color: #ffffff;
-    }
+  /** 지역이름 개별 위치 및 크기 */
+  .busan-string {
+    top: 60%;
+    left: 65%;
+  }
+  .chungbuk-string {
+    top: 28%;
+    left: 40%;
+  }
+  .chungnam-string {
+    top: 32%;
+    left: 5%;
+  }
+  .daegu-string {
+    top: 50%;
+    left: 55%;
+  }
+  .daejeon-string {
+    top: 43%;
+    left: 30%;
+  }
+  .gangwon-string {
+    top: 8%;
+    left: 45%;
+  }
+  .gyeongbuk-string {
+    top: 35%;
+    left: 65%;
+  }
+  .gyeonggi-string {
+    top: 20%;
+    left: 35%;
+  }
+  .gyeongnam-string {
+    top: 55%;
+    left: 45%;
+  }
+  .incheon-string {
+    top: 20%;
+    left: 10%;
+  }
+  .jeju-string {
+    top: 84%;
+    left: 2%;
+  }
+  .jeonbuk-string {
+    top: 50%;
+    left: 20%;
+  }
+  .jeonnam-string {
+    top: 68%;
+    left: 10%;
+  }
+  .sejong-string {
+    top: 37%;
+    left: 22%;
+  }
+  .seoul-string {
+    top: 14%;
+    left: 18%;
+  }
+  .ulsan-string {
+    top: 55%;
+    left: 70%;
+  }
+  .gwangju-string {
+    top: 60%;
+    left: 15%;
   }
   .busan {
     clip-path: polygon(
