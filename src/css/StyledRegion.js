@@ -25,7 +25,7 @@ const StyledRegion = styled.div`
     border-radius: 15px;
     line-height: 25px;
     color: #605353;
-    background-color: #eee;
+    background-color: rgba(0, 0, 0, 0);
     &:hover {
       color: pink;
       cursor: pointer;
@@ -33,7 +33,6 @@ const StyledRegion = styled.div`
   }
   /* width 지정 */
   @media screen and (min-width: 1024px) {
-    background-color: rgba(0, 0, 0, 0);
     width: 50%;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -59,6 +58,9 @@ const StyledRegion = styled.div`
     height: 100%;
     top: 0;
     left: 0;
+    &:hover {
+      background-color: #ffffff;
+    }
   }
 
   /** 지역이름 개별 위치 및 크기 */
@@ -99,12 +101,12 @@ const StyledRegion = styled.div`
     left: 45%;
   }
   .incheon-string {
-    top: 20%;
+    top: 18%;
     left: 10%;
   }
   .jeju-string {
     top: 84%;
-    left: 2%;
+    left: 0;
   }
   .jeonbuk-string {
     top: 50%;

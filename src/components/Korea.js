@@ -49,7 +49,7 @@ function Korea({ name }) {
                 className={region.name}
                 onClick={mapClick}
               ></div>
-              <div
+              <p
                 id={region.name}
                 key={region.id + "_string"}
                 className={region.name + "-string region-string"}
@@ -58,7 +58,7 @@ function Korea({ name }) {
                 onMouseLeave={(e) => hoverEvent(e, false)}
               >
                 {region.korName + " 3.25"}
-              </div>
+              </p>
             </>
           );
         })}
