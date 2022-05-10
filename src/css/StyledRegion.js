@@ -58,9 +58,10 @@ const StyledRegion = styled.div`
     height: 100%;
     top: 0;
     left: 0;
-    &:hover {
-      background-color: #ffffff;
-    }
+  }
+
+  .hover {
+    background-color: #ffffff;
   }
 
   /** 지역이름 개별 위치 및 크기 */
