@@ -18,7 +18,7 @@ Go to Play :: [Flower Map](https://taeminchoe.github.io/Flower-map/).
 
 
 
-### Prerequisite
+## Prerequisite
 
 package.json
 * react@17 :: "react": "^17.0.2",
