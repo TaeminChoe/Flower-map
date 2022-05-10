@@ -8,7 +8,6 @@ import { regionState } from "../atom";
 import { REGION_LIST } from "../utils/regionData";
 
 function Korea({ name }) {
-  // console.log(name);
   const setRegion = useSetRecoilState(regionState);
   const navi = useNavigate();
   const [hover, setHover] = useState(0);
