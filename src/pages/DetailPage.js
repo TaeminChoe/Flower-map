@@ -3,6 +3,7 @@ import DetailWeatherArea from "../components/DetailWeatherArea";
 import { StyledWrap } from "../css/StyledWrap";
 import { StyledBlur } from "../css/StyledBlur";
 import { StyledMain } from "../css/StyledMain";
+import HomeBtn from "../components/HomeBtn";
 
 function DetailPage() {
   return (
@@ -11,6 +12,7 @@ function DetailPage() {
       <StyledMain>
         <DetailMapArea />
         <DetailWeatherArea />
+        <HomeBtn />
       </StyledMain>
     </StyledWrap>
   );

@@ -6,6 +6,7 @@ export const REGION_LIST = [
     lat: 35.1796,
     lng: 129.0757,
     level: 8,
+    flowers: [{ 벚꽃: 3.24 }, { 개나리: 3.15 }, { 진달래: 3.15 }],
     places: [
       {
         id: 100,
@@ -33,10 +34,11 @@ export const REGION_LIST = [
   {
     id: 2,
     name: "chungbuk",
-    korName: "충청북도",
+    korName: "충북",
     lat: 36.6359,
     lng: 127.4913,
     level: 7,
+    flowers: [{ 벚꽃: 3.27 }, { 개나리: 3.19 }, { 진달래: 3.21 }],
     places: [
       {
         id: 200,
@@ -64,7 +66,7 @@ export const REGION_LIST = [
   {
     id: 3,
     name: "chungnam",
-    korName: "충청남도",
+    korName: "충남",
     lat: 36.6602,
     lng: 126.6736,
     level: 8,
@@ -99,6 +101,7 @@ export const REGION_LIST = [
     lat: 35.8716,
     lng: 128.6015,
     level: 8,
+    flowers: [{ 벚꽃: 3.26 }, { 개나리: 3.16 }, { 진달래: 3.19 }],
     places: [
       {
         id: 400,
@@ -130,6 +133,7 @@ export const REGION_LIST = [
     lat: 36.3505,
     lng: 127.3847,
     level: 7,
+    flowers: [{ 벚꽃: 3.27 }, { 개나리: 3.21 }, { 진달래: 3.2 }],
     places: [
       {
         id: 100,
@@ -157,10 +161,11 @@ export const REGION_LIST = [
   {
     id: 6,
     name: "gangwon",
-    korName: "강원도",
+    korName: "강원",
     lat: 37.7013,
     lng: 128.4086,
     level: 11,
+    flowers: [{ 벚꽃: 3.31 }, { 개나리: 3.23 }, { 진달래: 3.24 }],
     places: [
       {
         id: 100,
@@ -188,10 +193,11 @@ export const REGION_LIST = [
   {
     id: 8,
     name: "gyeongbuk",
-    korName: "경상북도",
+    korName: "경북",
     lat: 36.3305,
     lng: 128.7805,
     level: 10,
+    flowers: [{ 벚꽃: 3.25 }, { 개나리: 3.13 }, { 진달래: 3.18 }],
     places: [
       {
         id: 100,
@@ -219,7 +225,7 @@ export const REGION_LIST = [
   {
     id: 9,
     name: "gyeonggi",
-    korName: "경기도",
+    korName: "경기",
     lat: 37.5542,
     lng: 126.9897,
     level: 10,
@@ -250,10 +256,11 @@ export const REGION_LIST = [
   {
     id: 10,
     name: "gyeongnam",
-    korName: "경상남도",
+    korName: "경남",
     lat: 35.3607,
     lng: 128.337,
     level: 10,
+    flowers: [{ 벚꽃: 3.22 }, { 개나리: 3.17 }, { 진달래: 3.14 }],
     places: [
       {
         id: 100,
@@ -285,6 +292,7 @@ export const REGION_LIST = [
     lat: 37.4572,
     lng: 126.7045,
     level: 8,
+    flowers: [{ 벚꽃: 4.3 }, { 개나리: 3.27 }, { 진달래: 3.22 }],
     places: [
       {
         id: 100,
@@ -316,6 +324,7 @@ export const REGION_LIST = [
     lat: 33.3869,
     lng: 126.5652,
     level: 9,
+    flowers: [{ 벚꽃: 3.2 }, { 개나리: 3.5 }, { 진달래: 3.7 }],
     places: [
       {
         id: 100,
@@ -343,10 +352,11 @@ export const REGION_LIST = [
   {
     id: 13,
     name: "jeonbuk",
-    korName: "전라북도",
+    korName: "전북",
     lat: 35.7716,
     lng: 127.1985,
     level: 10,
+    flowers: [{ 벚꽃: 3.22 }, { 개나리: 3.16 }, { 진달래: 3.19 }],
     places: [
       {
         id: 100,
@@ -374,10 +384,11 @@ export const REGION_LIST = [
   {
     id: 14,
     name: "jeonnam",
-    korName: "전라남도",
+    korName: "전남",
     lat: 34.9415,
     lng: 126.975,
     level: 10,
+    flowers: [{ 벚꽃: 3.24 }, { 개나리: 3.14 }, { 진달래: 3.12 }],
     places: [
       {
         id: 100,
@@ -440,6 +451,7 @@ export const REGION_LIST = [
     lat: 37.5542,
     lng: 126.9897,
     level: 8,
+    flowers: [{ 벚꽃: 3.28 }, { 개나리: 3.22 }, { 진달래: 3.2 }],
     places: [
       {
         id: 100,
@@ -502,6 +514,7 @@ export const REGION_LIST = [
     lat: 35.1767,
     lng: 126.8368,
     level: 8,
+    flowers: [{ 벚꽃: 3.22 }, { 개나리: 3.15 }, { 진달래: 3.22 }],
     places: [
       {
         id: 100,

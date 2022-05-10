@@ -8,7 +8,7 @@ const Container = styled.div`
   background-size: 100% 100%;
   background-size: cover;
   animation-name: appear;
-  animation-duration: 3s;
+  animation-duration: 2s;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@ const Container = styled.div`
     0% {
       opacity: 0;
     }
-    80% {
+    70% {
       opacity: 1;
     }
     100% {

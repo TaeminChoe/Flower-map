@@ -6,3 +6,5 @@ export {
   WiLightning,
   WiRaindrops,
 } from "weather-icons-react";
+
+export { AiFillHome } from "react-icons/ai";

@@ -147,6 +147,7 @@ function SlideWeather() {
     if (!region) {
       setRegion(REGION_LIST.find((region) => region.id === Number(id)));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getData = async () => {
