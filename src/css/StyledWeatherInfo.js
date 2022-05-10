@@ -3,12 +3,10 @@ import styled from "styled-components";
 const StyledWeatherInfo = styled.div`
   width: 100%;
   height: 11vh;
-  /* padding: 1rem 0; */
   display: flex;
   justify-content: center;
   flex-flow: row;
   font-family: "Times New Roman", Times, serif;
-  /* background-color: white; */
 
   /* 오늘 기온 */
   h1 {

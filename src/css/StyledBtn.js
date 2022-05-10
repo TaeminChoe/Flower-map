@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const StyledBtn = styled.div`
   width: 95%;
   height: 50px;
@@ -8,7 +9,6 @@ const StyledBtn = styled.div`
   text-align: center;
   line-height: 50px;
   border-radius: 10px;
-  margin-bottom: 1.8%;
   color: white;
   font-size: 3rem;
   &:hover {
@@ -17,7 +17,10 @@ const StyledBtn = styled.div`
   }
   @media screen and (min-width: 1024px) {
     width: 100px;
+    height: 100px;
+    line-height: 100px;
     padding: 0;
+    margin-bottom: 2.8%;
     align-self: flex-end;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
