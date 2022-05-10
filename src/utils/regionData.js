@@ -70,6 +70,7 @@ export const REGION_LIST = [
     lat: 36.6602,
     lng: 126.6736,
     level: 8,
+    flowers: [],
     places: [
       {
         id: 300,
@@ -229,6 +230,7 @@ export const REGION_LIST = [
     lat: 37.5542,
     lng: 126.9897,
     level: 10,
+    flowers: [],
     places: [
       {
         id: 100,
@@ -420,6 +422,7 @@ export const REGION_LIST = [
     lat: 36.5633,
     lng: 127.2592,
     level: 8,
+    flowers: [],
     places: [
       {
         id: 100,
@@ -483,6 +486,7 @@ export const REGION_LIST = [
     lat: 35.5494,
     lng: 129.2892,
     level: 8,
+    flowers: [],
     places: [
       {
         id: 100,
