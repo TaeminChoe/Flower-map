@@ -19,9 +19,11 @@ function Korea({ name }) {
 
   /** 맵 선택시 className으로 구분 */
   const mapClick = (e) => {
+    console.log(e.target.className);
     const region = REGION_LIST.find(
       (region) => region.name === e.target.className
     );
+    console.log(region);
     navi(`/detail/${region.id}`);
     setRegion(region);
   };
