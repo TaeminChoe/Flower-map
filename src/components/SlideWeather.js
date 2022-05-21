@@ -151,9 +151,16 @@ function SlideWeather() {
   }, []);
 
   const getData = async () => {
+    const storageData = localStorage.getItem(`weather_${region.name}`);
+    if(storageData) {
+      return JSON.parse(storageData);
+    }
+
     const { data } = await axios.get(
       `${ONE_CALL}?lat=${region.lat}&lon=${region.lng}&exlude=current&appid=${API_KEY}&units=metric`
     );
+    localStorage.setItem(`weather_${region.name}`, JSON.stringify(data));
+    
     return data;
   };
 
