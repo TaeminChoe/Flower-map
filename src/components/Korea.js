@@ -19,11 +19,9 @@ function Korea({ name }) {
 
   /** 맵 선택시 className으로 구분 */
   const mapClick = (e) => {
-    console.log(e.target.className);
     const region = REGION_LIST.find(
-      (region) => region.name === e.target.className
+      (region) => region.name === e.target.className.split(" ")[0]
     );
-    console.log(region);
     navi(`/detail/${region.id}`);
     setRegion(region);
   };
@@ -39,6 +37,10 @@ function Korea({ name }) {
     <StyledRegion>
       {REGION_LIST &&
         REGION_LIST.map((region) => {
+          const flowerDate = region.flowers?.find(
+            (date) => Object.keys(date) == name
+          );
+          //name이랑 같을때는 찾음 -> 객체형태 파싱해야함
           return (
             <React.Fragment key={region.id + "_map"}>
               <div
@@ -54,7 +56,8 @@ function Korea({ name }) {
                 onMouseEnter={(e) => hoverEvent(e, region.id, true)}
                 onMouseLeave={(e) => hoverEvent(e, region.id, false)}
               >
-                {region.korName + " 3.25"}
+                {region.korName}
+                {flowerDate && flowerDate[name]}
               </p>
             </React.Fragment>
           );
