@@ -25,7 +25,6 @@ function DetailMapArea() {
                 <div style={{ color: "#000" }}>Hello World!</div>
               </MapMarker> */}
             {region.places.map((place) => {
-              console.log(place.name);
               return (
                 <MapMarker
                   key={place.id}
@@ -34,10 +33,7 @@ function DetailMapArea() {
                   <div
                     style={{
                       color: "#000",
-                      // display: "flex",
-                      // justifyContent: "center",
-                      // alignItems: "center",
-                      textAlign: "center",
+                      padding: "20px",
                     }}
                   >
                     {place.name}
