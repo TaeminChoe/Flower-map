@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import styled from "styled-components";
+//pages
 import ContentPage from "./pages/ContentPage";
 import DetailPage from "./pages/DetailPage";
 import PageNotFound from "./components/PageNotFound";
