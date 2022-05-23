@@ -170,7 +170,7 @@ export const REGION_LIST = [
     places: [
       {
         id: 600,
-        name: "대관령양때목장",
+        name: "대관령양떼목장",
         lat: 37.688447,
         lng: 128.752746,
         address: "강원도 평창군 대관령면 대관령마루길 483-32 대관령양떼목장",

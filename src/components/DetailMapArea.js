@@ -1,4 +1,5 @@
 import { useRecoilValue } from "recoil";
+import { Map, MapMarker, CustomOverlayMap } from "react-kakao-maps-sdk";
 //css
 import { StyledHeader } from "../css/StyledHeader";
 import { StyledDetailArea } from "../css/StyledDetailArea";
@@ -6,7 +7,6 @@ import { StyledDetailContent } from "../css/StyledDetailContent";
 //recoil
 import { regionState } from "../atom";
 //util
-import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 function DetailMapArea() {
   const region = useRecoilValue(regionState);
@@ -21,23 +21,42 @@ function DetailMapArea() {
             level={region.level}
             style={{ width: "100%", height: "100%" }}
           >
-            {/* <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
-                <div style={{ color: "#000" }}>Hello World!</div>
-              </MapMarker> */}
             {region.places.map((place) => {
               return (
                 <MapMarker
                   key={place.id}
                   position={{ lat: place.lat, lng: place.lng }}
+                  image={{
+                    src: `${process.env.PUBLIC_URL}/flower.png`,
+                    size: {
+                      width: 64,
+                      height: 69,
+                    },
+                  }}
                 >
-                  <div
+                  <CustomOverlayMap
+                    position={{ lat: place.lat, lng: place.lng }}
                     style={{
-                      color: "#000",
-                      padding: "20px",
+                      width: "100%",
+                      height: "55px",
+                      background: "rgba(255, 255, 255, 0.8)",
+                      borderRadius: "10px",
+                      fontFamily: "Haettenschweiler",
+                      fontSize: "1.2rem",
+                      fontWeight: "600",
+                      marginTop: "25%",
+                      cursor: "pointer",
                     }}
                   >
-                    {place.name}
-                  </div>
+                    <div
+                      style={{
+                        color: "#625c57",
+                        padding: "20px",
+                      }}
+                    >
+                      {place.name}
+                    </div>
+                  </CustomOverlayMap>
                 </MapMarker>
               );
             })}
