@@ -21,6 +21,8 @@ Go to Play :: [Flower Map](https://taeminchoe.github.io/Flower-map/).
 
 ## Prerequisite
 
+Node.js :: 16.13.1
+
 package.json
 * react@17 :: "react": "^17.0.2",
 * react-dom@17 :: "react-dom": "^17.0.2",
