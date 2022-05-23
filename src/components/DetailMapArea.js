@@ -23,9 +23,8 @@ function DetailMapArea() {
           >
             {region.places.map((place) => {
               return (
-                <>
+                <div key={place.id}>
                   <MapMarker
-                    key={place.id}
                     position={{ lat: place.lat, lng: place.lng }}
                     image={{
                       src: `${process.env.PUBLIC_URL}/flower.png`,
@@ -58,7 +57,7 @@ function DetailMapArea() {
                       {place.name}
                     </div>
                   </CustomOverlayMap>
-                </>
+                </div>
               );
             })}
           </Map>
