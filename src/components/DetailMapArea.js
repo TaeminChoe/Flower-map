@@ -23,17 +23,18 @@ function DetailMapArea() {
           >
             {region.places.map((place) => {
               return (
-                <MapMarker
-                  key={place.id}
-                  position={{ lat: place.lat, lng: place.lng }}
-                  image={{
-                    src: `${process.env.PUBLIC_URL}/flower.png`,
-                    size: {
-                      width: 64,
-                      height: 69,
-                    },
-                  }}
-                >
+                <>
+                  <MapMarker
+                    key={place.id}
+                    position={{ lat: place.lat, lng: place.lng }}
+                    image={{
+                      src: `${process.env.PUBLIC_URL}/flower.png`,
+                      size: {
+                        width: 64,
+                        height: 69,
+                      },
+                    }}
+                  />
                   <CustomOverlayMap
                     position={{ lat: place.lat, lng: place.lng }}
                     style={{
@@ -57,7 +58,7 @@ function DetailMapArea() {
                       {place.name}
                     </div>
                   </CustomOverlayMap>
-                </MapMarker>
+                </>
               );
             })}
           </Map>
