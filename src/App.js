@@ -15,6 +15,9 @@ const TransitionWrapper = styled.div`
   &.fadeOut {
     animation: 0.5s fadeOut forwards;
   }
+  &.fadeOut1 {
+    animation: 0.5s fadeOut forwards;
+  }
 
   @keyframes fadeIn {
     from {
