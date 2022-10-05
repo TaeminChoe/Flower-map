@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Flower-map/static/css/main.137ce247.chunk.css",
+    "main.js": "/Flower-map/static/js/main.39432af6.chunk.js",
+    "main.js.map": "/Flower-map/static/js/main.39432af6.chunk.js.map",
+    "runtime-main.js": "/Flower-map/static/js/runtime-main.e1522c2e.js",
+    "runtime-main.js.map": "/Flower-map/static/js/runtime-main.e1522c2e.js.map",
+    "static/css/2.950d6f1f.chunk.css": "/Flower-map/static/css/2.950d6f1f.chunk.css",
+    "static/js/2.1df2b66b.chunk.js": "/Flower-map/static/js/2.1df2b66b.chunk.js",
+    "static/js/2.1df2b66b.chunk.js.map": "/Flower-map/static/js/2.1df2b66b.chunk.js.map",
+    "index.html": "/Flower-map/index.html",
+    "static/css/2.950d6f1f.chunk.css.map": "/Flower-map/static/css/2.950d6f1f.chunk.css.map",
+    "static/css/main.137ce247.chunk.css.map": "/Flower-map/static/css/main.137ce247.chunk.css.map",
+    "static/js/2.1df2b66b.chunk.js.LICENSE.txt": "/Flower-map/static/js/2.1df2b66b.chunk.js.LICENSE.txt",
+    "static/media/flower4.e166f811.jpg": "/Flower-map/static/media/flower4.e166f811.jpg",
+    "static/media/loFlower.d9dded5d.jpg": "/Flower-map/static/media/loFlower.d9dded5d.jpg",
+    "static/media/slick-theme.css": "/Flower-map/static/media/slick.c94f7671.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e1522c2e.js",
+    "static/css/2.950d6f1f.chunk.css",
+    "static/js/2.1df2b66b.chunk.js",
+    "static/css/main.137ce247.chunk.css",
+    "static/js/main.39432af6.chunk.js"
+  ]
+}
